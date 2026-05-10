@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Don't Die Alone · Asset Selection</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0a0a0a">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter+Tight:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --ink: #0a0a0a;
+    --paper: #fff;
+    --use: #FCCC0A;
+    --bench: #A626AA;
+    --kill: #EE352E;
+    --rule: rgba(255,255,255,0.12);
+    --pink: #ec4899;
+  }
+  * { -webkit-font-smoothing: antialiased; }
+  html, body { background: var(--ink); color: #fff; font-family: 'Inter Tight', system-ui, sans-serif; }
+  .display { font-family: 'Archivo Black', sans-serif; letter-spacing: -0.025em; line-height: 0.9; }
+  .mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: 'tnum'; }
+  .label { text-transform: uppercase; letter-spacing: 0.22em; font-size: 0.7rem; font-weight: 500; }
+
+  .tile { transition: transform 0.25s ease, box-shadow 0.25s ease; border: 2px solid var(--rule); }
+  .tile:hover { transform: translateY(-2px); }
+  .tile img { display: block; width: 100%; height: auto; aspect-ratio: 4/3; object-fit: cover; background: #111; }
+
+  .tile[data-state="use"] { border-color: var(--use); box-shadow: 0 0 0 4px rgba(252,204,10,0.15); }
+  .tile[data-state="bench"] { border-color: var(--bench); box-shadow: 0 0 0 4px rgba(166,38,170,0.18); }
+  .tile[data-state="kill"] { border-color: var(--kill); box-shadow: 0 0 0 4px rgba(238,53,46,0.18); opacity: 0.55; }
+  .tile[data-state="kill"] img { filter: grayscale(0.85) brightness(0.65); }
+
+  .badge { display: none; position: absolute; top: 12px; left: 12px; z-index: 2; padding: 6px 10px; background: #000; color: #fff; font-family: 'Archivo Black', sans-serif; letter-spacing: 0.16em; font-size: 11px; border: 2px solid currentColor; }
+  .tile[data-state="use"] .badge { display: inline-block; color: var(--use); }
+  .tile[data-state="bench"] .badge { display: inline-block; color: var(--bench); }
+  .tile[data-state="kill"] .badge { display: inline-block; color: var(--kill); }
+
+  .flag { display: none; position: absolute; top: 12px; right: 12px; z-index: 2; padding: 4px 8px; background: rgba(238,53,46,0.92); color: #fff; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.14em; font-size: 9px; text-transform: uppercase; }
+  .tile[data-flag="true"] .flag { display: inline-block; }
+
+  .btn { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; padding: 10px 12px; border: 1px solid rgba(255,255,255,0.18); background: transparent; color: #fff; cursor: pointer; transition: all 0.2s ease; flex: 1; }
+  .btn:hover { background: rgba(255,255,255,0.06); }
+  .btn[data-active="true"][data-action="use"]    { background: var(--use); color: #000; border-color: var(--use); }
+  .btn[data-active="true"][data-action="bench"]  { background: var(--bench); color: #fff; border-color: var(--bench); }
+  .btn[data-active="true"][data-action="kill"]   { background: var(--kill); color: #fff; border-color: var(--kill); }
+
+  .filter-pill { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; padding: 8px 14px; border: 1px solid rgba(255,255,255,0.18); background: transparent; color: #fff; cursor: pointer; transition: all 0.18s ease; }
+  .filter-pill:hover { border-color: rgba(255,255,255,0.45); }
+  .filter-pill[data-active="true"] { background: #fff; color: #000; border-color: #fff; }
+
+  .footer-bar { position: sticky; bottom: 0; background: rgba(10,10,10,0.96); backdrop-filter: blur(16px); border-top: 1px solid var(--rule); }
+
+  .status-dot { width: 10px; height: 10px; border-radius: 9999px; display: inline-block; }
+  .dot-use { background: var(--use); }
+  .dot-bench { background: var(--bench); }
+  .dot-kill { background: var(--kill); }
+  .dot-untagged { background: rgba(255,255,255,0.25); }
+
+  ::selection { background: var(--use); color: #000; }
+
+  .tile.hidden-by-filter { display: none; }
+
+  /* direction tags */
+  .dir-tag { display: inline-block; padding: 2px 8px; font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; border: 1px solid currentColor; }
+  .dir-tag.locker { color: #FBBF24; }
+  .dir-tag.editorial { color: var(--pink); }
+  .dir-tag.arcade { color: #22D3EE; }
+  .dir-tag.quiet { color: #A3B18A; }
+  .dir-tag.logo { color: #ffffff; }
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="border-b border-white/10">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10 py-5 flex items-center justify-between gap-3 flex-wrap">
+    <div>
+      <div class="mono text-[10px] uppercase tracking-[0.22em] text-white/55">Don't Die Alone · Marketing · Asset Selection</div>
+      <h1 class="display text-2xl md:text-3xl uppercase mt-2">Pick the keepers.</h1>
+    </div>
+    <div class="mono text-[10px] uppercase tracking-[0.18em] text-white/55">21 assets · click to tag · keys 1·2·3</div>
+  </div>
+</header>
+
+<!-- Brief -->
+<section class="border-b border-white/10 py-6">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10 grid md:grid-cols-2 gap-6">
+    <div>
+      <div class="mono label text-white/55">How this works</div>
+      <p class="mt-2 text-sm text-white/80 leading-relaxed">
+        21 generated assets across 4 directions plus 4 logos. Each tile is pre-seeded with my recommendation —
+        flip whatever you disagree with. Use <span class="text-white">Use</span> for "ship it",
+        <span class="text-white">Bench</span> for "keep but maybe not", <span class="text-white">Kill</span> for "drop it".
+        When you're happy, hit <span class="text-white">Copy selections</span> at the bottom and paste back to me.
+        I build the 4 mockups around your USE set.
+      </p>
+    </div>
+    <div>
+      <div class="mono label text-white/55">The 4 directions</div>
+      <ul class="mt-2 text-sm text-white/80 leading-relaxed space-y-1">
+        <li><span class="dir-tag locker">A · Locker Room</span> &nbsp; Friday-night-football energy. Numbers as truth.</li>
+        <li><span class="dir-tag editorial">B · Editorial</span> &nbsp; A New Yorker piece on why dating is broken.</li>
+        <li><span class="dir-tag arcade">C · Arcade</span> &nbsp; Pizza-shop arcade cabinet rebrand.</li>
+        <li><span class="dir-tag quiet">D · Quiet</span> &nbsp; Calm.app for dating sanity. The opposite.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- Legend -->
+<section class="border-b border-white/10 py-5">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10 flex flex-wrap items-center gap-x-6 gap-y-3">
+    <div class="flex items-center gap-2 mono text-[10px] uppercase tracking-[0.18em] text-white/70">
+      <span class="status-dot dot-use"></span> Use — goes in the build
+    </div>
+    <div class="flex items-center gap-2 mono text-[10px] uppercase tracking-[0.18em] text-white/70">
+      <span class="status-dot dot-bench"></span> Bench — keep, may use
+    </div>
+    <div class="flex items-center gap-2 mono text-[10px] uppercase tracking-[0.18em] text-white/70">
+      <span class="status-dot dot-kill"></span> Kill — drop it
+    </div>
+    <div class="flex items-center gap-2 mono text-[10px] uppercase tracking-[0.18em] text-white/40">
+      <span class="status-dot dot-untagged"></span> Untagged
+    </div>
+  </div>
+</section>
+
+<!-- Filters -->
+<section class="border-b border-white/10 py-4">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10 flex flex-wrap items-center gap-2">
+    <span class="mono text-[10px] uppercase tracking-[0.22em] text-white/45 mr-2">Direction:</span>
+    <button class="filter-pill" data-filter="all" data-active="true">All</button>
+    <button class="filter-pill" data-filter="logo">Logos</button>
+    <button class="filter-pill" data-filter="locker">A · Locker</button>
+    <button class="filter-pill" data-filter="editorial">B · Editorial</button>
+    <button class="filter-pill" data-filter="arcade">C · Arcade</button>
+    <button class="filter-pill" data-filter="quiet">D · Quiet</button>
+    <span class="mono text-[10px] uppercase tracking-[0.22em] text-white/45 ml-4 mr-2">Status:</span>
+    <button class="filter-pill" data-status="all" data-active="true">All</button>
+    <button class="filter-pill" data-status="untagged">Untagged</button>
+    <button class="filter-pill" data-status="use">Use</button>
+    <button class="filter-pill" data-status="bench">Bench</button>
+    <button class="filter-pill" data-status="kill">Kill</button>
+  </div>
+</section>
+
+<!-- Grid -->
+<section class="py-8 md:py-10">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10">
+    <div id="grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"></div>
+  </div>
+</section>
+
+<!-- Action bar -->
+<div class="footer-bar py-4 md:py-5">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10 flex items-center justify-between gap-4 flex-wrap">
+    <div class="mono text-[10px] uppercase tracking-[0.18em] text-white/70 flex items-center gap-4 flex-wrap">
+      <span><span class="status-dot dot-use mr-2"></span>Use <span id="count-use" class="text-white">0</span></span>
+      <span><span class="status-dot dot-bench mr-2"></span>Bench <span id="count-bench" class="text-white">0</span></span>
+      <span><span class="status-dot dot-kill mr-2"></span>Kill <span id="count-kill" class="text-white">0</span></span>
+      <span><span class="status-dot dot-untagged mr-2"></span>Untagged <span id="count-untagged" class="text-white">0</span></span>
+    </div>
+    <div class="flex items-center gap-2 flex-wrap">
+      <button id="copy-btn" class="filter-pill">Copy selections</button>
+      <button id="reset-btn" class="filter-pill">Reset all</button>
+    </div>
+  </div>
+</div>
+
+<!-- Toast -->
+<div id="toast" class="fixed left-1/2 bottom-24 -translate-x-1/2 bg-white text-black px-4 py-2 mono text-[11px] uppercase tracking-[0.18em] opacity-0 transition-opacity duration-300 pointer-events-none z-50">Copied</div>
+
+<!-- Banana Bytes credit -->
+<div style="text-align:center; padding:1.5rem 1rem; font-size:0.7rem; letter-spacing:0.05em; opacity:0.45; background:#000; color:#fff; border-top: 1px solid rgba(255,255,255,0.08);">
+  <a href="https://instagram.com/BananaCares" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+    Mockup created by Banana Bytes
+  </a>
+</div>
+
+<script>
+  const ASSETS = [
+    // === LOGOS (one per direction) ===
+    { id: 'L-A', file: 'logo-A-locker-room.jpg',   title: 'Logo · Locker Room stencil',   cat: 'logo', dir: 'A', myPick: 'use',
+      notes: 'Three-line stencil on dented chrome, harsh overhead light, surprise scoreboard-amber paint streak. NB Pro nailed text.' },
+    { id: 'L-B', file: 'logo-B-editorial.jpg',     title: 'Logo · Editorial masthead',    cat: 'logo', dir: 'B', myPick: 'use',
+      notes: 'Italic Bodoni serif on cream uncoated stock with "AN HONESTY ENGINE" kicker. Strongest logo in the set.' },
+    { id: 'L-C', file: 'logo-C-arcade.jpg',        title: 'Logo · Arcade neon marquee',   cat: 'logo', dir: 'C', myPick: 'use', flag: true,
+      notes: 'TRADEMARK FLAG — visible "Street Fighter II" / "Galaga" cabinet glows in bokeh. If you pick this, I regen with branded games scrubbed (~$0.13).' },
+    { id: 'L-D', file: 'logo-D-quiet.jpg',         title: 'Logo · Quiet refined wordmark', cat: 'logo', dir: 'D', myPick: 'use',
+      notes: 'Hand-drawn sepia rule + restrained serif + italic kicker "a kindness, plainly." + sage watercolor corner. Could BE the entire D hero.' },
+
+    // === DIRECTION A · LOCKER ROOM ===
+    { id: 'A1', file: 'A1-scoreboard-hero.jpg',    title: 'A1 · Scoreboard hero',         cat: 'locker', dir: 'A', myPick: 'use',
+      notes: 'THE gut-punch shot — "YOU 0.6% / LEAGUE 10.5%" in amber LED dot-matrix on a riveted scoreboard above empty bleachers. Best image in the entire batch.' },
+    { id: 'A2', file: 'A2-locker-texture.jpg',     title: 'A2 · Locker texture',          cat: 'locker', dir: 'A', myPick: 'use',
+      notes: 'Hunter-green dented lockers under fluorescent overhead. Section divider / texture for Direction A.' },
+    { id: 'A3', file: 'A3-ref-stripes.jpg',        title: 'A3 · Ref-stripe pattern',      cat: 'locker', dir: 'A', myPick: 'bench',
+      notes: 'Clean abstract — but maybe too on-the-nose. Could work as a tiny nav accent. Bench for now.' },
+    { id: 'A4', file: 'A4-empty-bleachers.jpg',    title: 'A4 · Empty bleachers',         cat: 'locker', dir: 'A', myPick: 'use',
+      notes: 'Wooden bleachers, cold blue-grey lights, distant amber clock-glow upper right. Lonely pre-game energy. "Why this exists" section asset.' },
+
+    // === DIRECTION B · EDITORIAL ===
+    { id: 'B1', file: 'B1-cover-silhouette.jpg',   title: 'B1 · Cover silhouette',        cat: 'editorial', dir: 'B', myPick: 'use',
+      notes: 'Black-and-white editorial portrait, man holding rectangular phone-as-mirror to face. Could be the entire B hero.' },
+    { id: 'B2', file: 'B2-newsprint-texture.jpg',  title: 'B2 · Newsprint texture',       cat: 'editorial', dir: 'B', myPick: 'bench',
+      notes: 'Subtle paper grain. Could be subtle background, but CSS could probably do this cheaper.' },
+    { id: 'B3', file: 'B3-smoke-ink.jpg',          title: 'B3 · Smoke + ink illustration', cat: 'editorial', dir: 'B', myPick: 'use',
+      notes: 'Match with curling smoke. NYRB sketch mood — perfect Direction B section break.' },
+    { id: 'B4', file: 'B4-typewriter-ribbon.jpg',  title: 'B4 · Typewriter ribbon still life', cat: 'editorial', dir: 'B', myPick: 'bench',
+      notes: 'Tasteful but maybe too "writer aesthetic" cliché. Slight readable text on the typed pages, blurred. Bench.' },
+
+    // === DIRECTION C · ARCADE ===
+    { id: 'C1', file: 'C1-arcade-cabinet.jpg',     title: 'C1 · Arcade cabinet hero',     cat: 'arcade', dir: 'C', myPick: 'use',
+      notes: 'Pink-trimmed cabinet with rose-and-flame side art, character-select grid on screen, dive-bar bokeh. Tiny illegible "GAME" text on screen — minor.' },
+    { id: 'C2', file: 'C2-character-select.jpg',   title: 'C2 · Character-select grid',   cat: 'arcade', dir: 'C', myPick: 'use',
+      notes: 'Gym bro, hopeless romantic, slick suit, hooded reader, pink question center, photographer, hooded coder, lumberjack (unrequested but works), skater. Repurpose as feature grid.' },
+    { id: 'C3', file: 'C3-banana-sprite.jpg',      title: 'C3 · Banana-suit pixel sprite', cat: 'arcade', dir: 'C', myPick: 'use',
+      notes: 'DON\'T SHIP DIRECTION C WITHOUT THIS. Daddy\'s banana-suit + sunflower context as a 16-bit Easter egg.' },
+    { id: 'C4', file: 'C4-crt-scanline.jpg',       title: 'C4 · CRT scanline texture',    cat: 'arcade', dir: 'C', myPick: 'bench',
+      notes: 'Subtle scanline + chromatic ghost. Could overlay sections, but CSS could replicate cheaply.' },
+    { id: 'C5', file: 'C5-insert-coin.jpg',        title: 'C5 · INSERT COIN neon',        cat: 'arcade', dir: 'C', myPick: 'use',
+      notes: 'Cinematic INSERT COIN sign through rain-streaked glass with arcade bokeh. NB Pro. Perfect for the "Score my profile" CTA section.' },
+
+    // === DIRECTION D · QUIET ===
+    { id: 'D1', file: 'D1-sunflower-line.jpg',     title: 'D1 · Sunflower line drawing',  cat: 'quiet', dir: 'D', myPick: 'use',
+      notes: 'Single sunflower in hairline ink on cream. Quiet, sunflower-as-Daddy-context without being literal.' },
+    { id: 'D2', file: 'D2-handwritten-quote.jpg',  title: 'D2 · "a kindness, plainly."',  cat: 'quiet', dir: 'D', myPick: 'use',
+      notes: 'Italic Bodoni-style serif rather than fountain pen, but reads beautifully. Could anchor entire D hero. Tagline matches Logo D — coherent.' },
+    { id: 'D3', file: 'D3-watercolor-wash.jpg',    title: 'D3 · Watercolor wash texture', cat: 'quiet', dir: 'D', myPick: 'bench',
+      notes: 'Soft dusty-clay bloom with sage trace. Subtle texture for D section breaks if needed.' },
+    { id: 'D4', file: 'D4-sunflower-zine.jpg',     title: 'D4 · Sunflower zine collage',  cat: 'quiet', dir: 'D', myPick: 'use',
+      notes: 'Sunflower polaroid taped to cream paper with washi tape, faint pencil mark in margin. Real keeper. "Why this exists" asset.' }
+  ];
+
+  const STORAGE_KEY = 'dont-die-alone-marketing-selection-v1';
+  let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+
+  if (Object.keys(state).length === 0) {
+    ASSETS.forEach(a => state[a.id] = a.myPick);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
+
+  const grid = document.getElementById('grid');
+
+  function render() {
+    grid.innerHTML = ASSETS.map(a => {
+      const s = state[a.id] || '';
+      const myFlag = a.myPick && a.myPick === s ? `<span class="text-white/45">· my pick</span>` : '';
+      const myDiff = a.myPick && a.myPick !== s ? `<span class="text-white/45">· I picked ${a.myPick.toUpperCase()}</span>` : '';
+      const dirClass = a.cat === 'logo' ? 'logo' : a.cat;
+      return `
+        <article class="tile relative bg-[#0d0d0d]" data-id="${a.id}" data-state="${s}" data-cat="${a.cat}" data-flag="${a.flag === true}">
+          <span class="badge">${s ? s.toUpperCase() : ''}</span>
+          <span class="flag">⚠ FLAG</span>
+          <a href="images/${a.file}" target="_blank" rel="noopener">
+            <img src="images/${a.file}" alt="${a.title}" loading="lazy">
+          </a>
+          <div class="p-4 md:p-5">
+            <div class="flex items-baseline gap-2 mono text-[10px] uppercase tracking-[0.18em] text-white/55 flex-wrap">
+              <span class="text-white">${a.id}</span>
+              <span aria-hidden="true">·</span>
+              <span class="dir-tag ${dirClass}">${a.cat === 'logo' ? 'Logo · ' + a.dir : a.cat}</span>
+              ${myFlag}${myDiff}
+            </div>
+            <h3 class="display uppercase text-base md:text-lg mt-2">${a.title}</h3>
+            <p class="mt-2 text-sm text-white/65 leading-snug">${a.notes}</p>
+            <div class="mt-4 flex gap-2">
+              <button class="btn" data-action="use"   data-id="${a.id}" data-active="${s==='use'}">Use</button>
+              <button class="btn" data-action="bench" data-id="${a.id}" data-active="${s==='bench'}">Bench</button>
+              <button class="btn" data-action="kill"  data-id="${a.id}" data-active="${s==='kill'}">Kill</button>
+            </div>
+          </div>
+        </article>
+      `;
+    }).join('');
+    updateCounts();
+    applyFilters();
+  }
+
+  function updateCounts() {
+    const counts = { use: 0, bench: 0, kill: 0, untagged: 0 };
+    ASSETS.forEach(a => {
+      const s = state[a.id];
+      if (s === 'use' || s === 'bench' || s === 'kill') counts[s]++;
+      else counts.untagged++;
+    });
+    document.getElementById('count-use').textContent = counts.use;
+    document.getElementById('count-bench').textContent = counts.bench;
+    document.getElementById('count-kill').textContent = counts.kill;
+    document.getElementById('count-untagged').textContent = counts.untagged;
+  }
+
+  let activeCat = 'all';
+  let activeStatus = 'all';
+
+  function applyFilters() {
+    document.querySelectorAll('.tile').forEach(t => {
+      const cat = t.getAttribute('data-cat');
+      const st = t.getAttribute('data-state') || '';
+      const catOk = activeCat === 'all' || cat === activeCat;
+      let statusOk = true;
+      if (activeStatus === 'untagged') statusOk = !st;
+      else if (activeStatus !== 'all') statusOk = st === activeStatus;
+      t.classList.toggle('hidden-by-filter', !(catOk && statusOk));
+    });
+  }
+
+  grid.addEventListener('click', e => {
+    const btn = e.target.closest('button[data-action]');
+    if (!btn) return;
+    const id = btn.getAttribute('data-id');
+    const action = btn.getAttribute('data-action');
+    if (state[id] === action) {
+      delete state[id];
+    } else {
+      state[id] = action;
+    }
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    render();
+  });
+
+  document.querySelectorAll('[data-filter]').forEach(b => {
+    b.addEventListener('click', () => {
+      activeCat = b.getAttribute('data-filter');
+      document.querySelectorAll('[data-filter]').forEach(x => x.setAttribute('data-active', x === b ? 'true' : 'false'));
+      applyFilters();
+    });
+  });
+  document.querySelectorAll('[data-status]').forEach(b => {
+    b.addEventListener('click', () => {
+      activeStatus = b.getAttribute('data-status');
+      document.querySelectorAll('[data-status]').forEach(x => x.setAttribute('data-active', x === b ? 'true' : 'false'));
+      applyFilters();
+    });
+  });
+
+  document.getElementById('copy-btn').addEventListener('click', async () => {
+    const lines = [];
+    lines.push('# Don\'t Die Alone · Selection · ' + new Date().toLocaleString());
+    lines.push('');
+    ['use','bench','kill'].forEach(group => {
+      const ids = ASSETS.filter(a => state[a.id] === group);
+      if (ids.length) {
+        lines.push(`## ${group.toUpperCase()} (${ids.length})`);
+        ids.forEach(a => lines.push(`- ${a.id} ${a.title} — images/${a.file}`));
+        lines.push('');
+      }
+    });
+    const untagged = ASSETS.filter(a => !state[a.id]);
+    if (untagged.length) {
+      lines.push(`## UNTAGGED (${untagged.length})`);
+      untagged.forEach(a => lines.push(`- ${a.id} ${a.title}`));
+    }
+    const text = lines.join('\n');
+    try {
+      await navigator.clipboard.writeText(text);
+      showToast('Copied · paste back to me');
+    } catch(e) {
+      const w = window.open('', '_blank');
+      w.document.write('<pre style="font-family:monospace;white-space:pre-wrap;padding:24px">' + text.replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c])) + '</pre>');
+    }
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', () => {
+    if (!confirm('Reset all selections? This will clear your tags and reseed with my picks.')) return;
+    state = {};
+    ASSETS.forEach(a => state[a.id] = a.myPick);
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    render();
+  });
+
+  function showToast(msg) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.style.opacity = '1';
+    setTimeout(() => { el.style.opacity = '0'; }, 1800);
+  }
+
+  document.addEventListener('keydown', e => {
+    const map = { '1':'use', '2':'bench', '3':'kill' };
+    const action = map[e.key];
+    if (!action) return;
+    const hover = document.querySelector('.tile:hover');
+    if (!hover) return;
+    const id = hover.getAttribute('data-id');
+    if (state[id] === action) delete state[id]; else state[id] = action;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    render();
+  });
+
+  render();
+</script>
+
+</body>
+</html>
