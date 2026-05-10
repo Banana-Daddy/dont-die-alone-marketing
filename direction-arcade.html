@@ -1,0 +1,540 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Don't Die Alone — INSERT COIN · Arcade</title>
+<meta name="description" content="A brutal, evidence-based read on your dating profile. Insert coin. We score every photo and prompt against published research. Free during beta.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Don't Die Alone">
+<meta property="og:title" content="Don't Die Alone — INSERT COIN">
+<meta property="og:description" content="Insert coin. We score every photo and prompt against published research. Lifebar-style results, no leaderboard. Free during beta.">
+<meta property="og:url" content="https://banana-daddy.github.io/dont-die-alone-marketing/direction-arcade.html">
+<meta property="og:image" content="https://banana-daddy.github.io/dont-die-alone-marketing/images/og-arcade.jpg">
+<meta property="og:image:secure_url" content="https://banana-daddy.github.io/dont-die-alone-marketing/images/og-arcade.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A glowing hot-pink and cyan neon arcade marquee reading DONT DIE ALONE on a wood cabinet header.">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Don't Die Alone — INSERT COIN">
+<meta name="twitter:description" content="Insert coin. We score every photo and prompt against published research. Lifebar-style results.">
+<meta name="twitter:image" content="https://banana-daddy.github.io/dont-die-alone-marketing/images/og-arcade.jpg">
+
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" sizes="512x512" href="images/favicon-512.png">
+<link rel="canonical" href="https://banana-daddy.github.io/dont-die-alone-marketing/direction-arcade.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Epilogue:wght@400;500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --crt: #0A0A0A;
+    --pink: #EC4899;
+    --pink-deep: #BE185D;
+    --cyan: #22D3EE;
+    --yellow: #FACC15;
+    --paper: #FAFAFA;
+    --rule: rgba(255,255,255,0.10);
+  }
+  * { -webkit-font-smoothing: antialiased; }
+  html, body { background: var(--crt); color: var(--paper); font-family: 'Epilogue', system-ui, sans-serif; overflow-x: hidden; }
+  .display { font-family: 'Anton', sans-serif; letter-spacing: 0.01em; line-height: 0.95; text-transform: uppercase; }
+  .pixel { font-family: 'Press Start 2P', monospace; letter-spacing: 0.05em; }
+  .label { font-family: 'Press Start 2P', monospace; font-size: 0.6rem; letter-spacing: 0.1em; }
+
+  /* Scanline overlay applied to whole page */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0, rgba(0,0,0,0.18) 1px, transparent 1px, transparent 3px);
+    pointer-events: none;
+    z-index: 100;
+    mix-blend-mode: multiply;
+  }
+
+  /* Neon text */
+  .neon-pink {
+    color: var(--pink);
+    text-shadow: 0 0 6px var(--pink), 0 0 18px rgba(236,72,153,0.6), 0 0 36px rgba(236,72,153,0.4);
+  }
+  .neon-cyan {
+    color: var(--cyan);
+    text-shadow: 0 0 6px var(--cyan), 0 0 18px rgba(34,211,238,0.55), 0 0 36px rgba(34,211,238,0.35);
+  }
+  .neon-yellow {
+    color: var(--yellow);
+    text-shadow: 0 0 6px var(--yellow), 0 0 18px rgba(250,204,21,0.55), 0 0 36px rgba(250,204,21,0.35);
+  }
+
+  /* Lifebar */
+  .lifebar-track {
+    background: #1a1a1a;
+    border: 2px solid #fff;
+    height: 28px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.6);
+  }
+  .lifebar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ef4444 0%, var(--yellow) 35%, #22c55e 65%, var(--cyan) 100%);
+    transition: width 1.5s cubic-bezier(0.65, 0, 0.35, 1);
+    box-shadow: inset 0 0 12px rgba(255,255,255,0.4);
+  }
+  .lifebar-fill::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(90deg, transparent 0, transparent 14px, rgba(0,0,0,0.18) 14px, rgba(0,0,0,0.18) 16px);
+  }
+
+  .pixel-card {
+    background: #111;
+    border: 2px solid #fff;
+    box-shadow: 6px 6px 0 var(--pink), 12px 12px 0 var(--crt);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .pixel-card:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 var(--pink), 18px 18px 0 var(--crt);
+  }
+  .pixel-card.cyan { box-shadow: 6px 6px 0 var(--cyan), 12px 12px 0 var(--crt); }
+  .pixel-card.cyan:hover { box-shadow: 9px 9px 0 var(--cyan), 18px 18px 0 var(--crt); }
+  .pixel-card.yellow { box-shadow: 6px 6px 0 var(--yellow), 12px 12px 0 var(--crt); }
+  .pixel-card.yellow:hover { box-shadow: 9px 9px 0 var(--yellow), 18px 18px 0 var(--crt); }
+
+  .btn-coin {
+    background: var(--pink);
+    color: #fff;
+    font-family: 'Anton', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    border: 3px solid #fff;
+    box-shadow: 6px 6px 0 var(--cyan), 12px 12px 0 var(--crt);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    cursor: pointer;
+  }
+  .btn-coin:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 9px 9px 0 var(--cyan), 18px 18px 0 var(--crt);
+  }
+
+  /* CRT border around cabinet */
+  .cabinet {
+    border: 4px solid var(--pink);
+    box-shadow:
+      0 0 0 4px var(--crt),
+      0 0 0 8px var(--cyan),
+      0 30px 80px rgba(236,72,153,0.5);
+    background: var(--crt);
+  }
+
+  /* Marquee */
+  .marquee {
+    overflow: hidden;
+    border-block: 3px solid var(--pink);
+    background: #000;
+  }
+  .marquee-track {
+    display: flex;
+    gap: 3rem;
+    width: max-content;
+    animation: marquee-scroll 26s linear infinite;
+    padding: 0.9rem 0;
+  }
+  @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-item { font-family: 'Anton', sans-serif; font-size: 1.6rem; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+  @media (prefers-reduced-motion: reduce) { .marquee-track { animation: none; } }
+
+  ::selection { background: var(--pink); color: #fff; }
+
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
+  /* Blink */
+  @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0.25; } }
+  .blink { animation: blink 1.2s infinite; }
+</style>
+</head>
+<body>
+
+<!-- TOP MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item neon-pink">★ INSERT COIN</span>
+    <span class="marquee-item neon-cyan">PRESS START</span>
+    <span class="marquee-item neon-yellow">YOUR MATCH RATE: 0.6%</span>
+    <span class="marquee-item neon-pink">★ INSERT COIN</span>
+    <span class="marquee-item neon-cyan">FREE DURING BETA</span>
+    <span class="marquee-item neon-yellow">12 PLATFORMS · 1 SCORE</span>
+    <!-- duplicate for seamless loop -->
+    <span class="marquee-item neon-pink">★ INSERT COIN</span>
+    <span class="marquee-item neon-cyan">PRESS START</span>
+    <span class="marquee-item neon-yellow">YOUR MATCH RATE: 0.6%</span>
+    <span class="marquee-item neon-pink">★ INSERT COIN</span>
+    <span class="marquee-item neon-cyan">FREE DURING BETA</span>
+    <span class="marquee-item neon-yellow">12 PLATFORMS · 1 SCORE</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<header class="border-b border-white/10 sticky top-0 z-40 backdrop-blur-md bg-black/85">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10 py-3 md:py-4 flex items-center justify-between gap-4">
+    <a href="index.html" class="display text-2xl md:text-3xl neon-pink">Don't Die Alone</a>
+    <div class="flex items-center gap-3 md:gap-5">
+      <a href="#stage" class="label hidden sm:inline text-white/55 hover:text-white">STAGE 1</a>
+      <a href="#research" class="label hidden sm:inline text-white/55 hover:text-white">CREDITS</a>
+      <a href="https://dontdiealone.app/scan" class="btn-coin px-4 md:px-6 py-2 md:py-3 text-sm md:text-base">PLAY NOW</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO · CABINET -->
+<section class="relative pt-10 md:pt-16 pb-12 md:pb-20 overflow-hidden">
+  <div class="absolute inset-0 opacity-30" style="background: radial-gradient(800px 600px at 50% 20%, rgba(236,72,153,0.18), transparent 60%);"></div>
+  <div class="max-w-[1300px] mx-auto px-5 md:px-10 relative">
+    <div class="cabinet rounded-sm overflow-hidden mb-10 md:mb-14 reveal">
+      <img src="images/logo-C-arcade.jpg" alt="A hot-pink and electric-cyan neon arcade-cabinet marquee reading DONT DIE ALONE." class="w-full h-auto" loading="eager">
+    </div>
+
+    <div class="text-center max-w-4xl mx-auto">
+      <div class="label neon-yellow blink mb-4">★ STAGE 01 · THE READ ★</div>
+      <h1 class="display text-[3.5rem] sm:text-7xl md:text-8xl lg:text-9xl">
+        <span class="neon-pink">Why aren't you</span><br>
+        <span class="neon-cyan">matching?</span>
+      </h1>
+      <p class="display text-xl sm:text-2xl md:text-3xl mt-6 neon-yellow">FIND OUT IN 60 SECONDS.</p>
+      <p class="mt-6 text-lg md:text-xl text-white/75 max-w-2xl mx-auto">
+        Insert coin. Upload your screenshots. We score every photo, your bio, and your prompts against published platform research.
+      </p>
+      <div class="mt-8 md:mt-10 flex justify-center">
+        <a href="https://dontdiealone.app/scan" class="btn-coin px-8 md:px-10 py-4 md:py-5 text-xl md:text-2xl">★ SCORE MY PROFILE ★</a>
+      </div>
+      <div class="label text-white/55 mt-6">FREE IN BETA · ~60 SEC · NO LOGIN</div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFEBARS -->
+<section class="py-16 md:py-24 bg-[#0d0d0d] border-y-2 border-pink-500/40">
+  <div class="max-w-[1300px] mx-auto px-5 md:px-10">
+    <div class="text-center mb-10 md:mb-14">
+      <div class="label neon-cyan mb-3">★ STAGE 02 · STATUS ★</div>
+      <h2 class="display text-5xl md:text-6xl lg:text-7xl">YOUR HP / THEIR HP.</h2>
+      <p class="mt-5 max-w-2xl mx-auto text-white/70">Three numbers. Same energy as a fighting-game life screen — except the boss is the algorithm.</p>
+    </div>
+
+    <div class="space-y-8 md:space-y-10 max-w-3xl mx-auto">
+      <!-- 0.6% / 10.5% lifebar -->
+      <div>
+        <div class="flex justify-between items-baseline mb-2">
+          <span class="label neon-pink">P1 · YOU · TINDER MATCH RATE</span>
+          <span class="display text-4xl neon-pink">0.6%</span>
+        </div>
+        <div class="lifebar-track">
+          <div class="lifebar-fill" style="width: 6%;" data-target="6"></div>
+        </div>
+        <div class="flex justify-between items-baseline mt-5 mb-2">
+          <span class="label neon-cyan">P2 · WOMEN · TINDER MATCH RATE</span>
+          <span class="display text-4xl neon-cyan">10.5%</span>
+        </div>
+        <div class="lifebar-track">
+          <div class="lifebar-fill" style="width: 100%;" data-target="100"></div>
+        </div>
+        <div class="label text-white/45 mt-2">SOURCE: TYSON ET AL · PEER-REVIEWED · 2016</div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 md:gap-10 pt-8 border-t border-white/10">
+        <div>
+          <div class="flex justify-between items-baseline mb-2">
+            <span class="label neon-yellow">SINGLE MEN UNDER 30</span>
+            <span class="display text-3xl neon-yellow">63%</span>
+          </div>
+          <div class="lifebar-track"><div class="lifebar-fill" style="width: 63%;"></div></div>
+          <div class="label text-white/45 mt-2">PEW RESEARCH · 2022</div>
+        </div>
+        <div>
+          <div class="flex justify-between items-baseline mb-2">
+            <span class="label neon-pink">EMOTIONALLY EXHAUSTED</span>
+            <span class="display text-3xl neon-pink">74%</span>
+          </div>
+          <div class="lifebar-track"><div class="lifebar-fill" style="width: 74%;"></div></div>
+          <div class="label text-white/45 mt-2">FORBES HEALTH · 2024</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY THIS EXISTS — broadcast on a CRT -->
+<section class="py-16 md:py-24">
+  <div class="max-w-[1300px] mx-auto px-5 md:px-10">
+    <div class="mb-10 md:mb-14">
+      <div class="label neon-yellow mb-3">★ STAGE 03 · DISPATCH ★</div>
+      <h2 class="display text-5xl md:text-6xl lg:text-7xl">
+        <span class="neon-cyan">THIS IS NOT</span><br>
+        <span class="neon-pink">A VIBES PROBLEM.</span>
+      </h2>
+      <p class="mt-6 max-w-2xl text-lg md:text-xl text-white/75 leading-relaxed">
+        Loneliness in young men isn't a meme — it's a measurable health crisis. The apps that promised to fix it are statistically making it worse. Insert coin. Stop guessing.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+      <article class="pixel-card p-6 reveal">
+        <div class="display text-7xl neon-pink">29%</div>
+        <p class="mt-4 text-sm text-white/85 leading-snug">Increased risk of premature death from social isolation. Equivalent to smoking up to 15 cigarettes a day.</p>
+        <div class="label text-white/45 mt-3">U.S. SURGEON GENERAL · 2023</div>
+      </article>
+      <article class="pixel-card cyan p-6 reveal">
+        <div class="display text-7xl neon-cyan">25%</div>
+        <p class="mt-4 text-sm text-white/85 leading-snug">Of young US men feel lonely "a lot of the day" — the largest gap in the developed world.</p>
+        <div class="label text-white/45 mt-3">GALLUP WORLD POLL · 2025</div>
+      </article>
+      <article class="pixel-card yellow p-6 reveal">
+        <div class="display text-7xl neon-yellow">5×</div>
+        <p class="mt-4 text-sm text-white/85 leading-snug">More American men report having no close friends today than in 1990 (15% vs 3%).</p>
+        <div class="label text-white/45 mt-3">SURVEY CENTER ON AMERICAN LIFE · 2021</div>
+      </article>
+      <article class="pixel-card cyan p-6 reveal">
+        <div class="display text-7xl neon-cyan">52%</div>
+        <p class="mt-4 text-sm text-white/85 leading-snug">Of men on Hinge get fewer than one match per day.</p>
+        <div class="label text-white/45 mt-3">HINGE / MATCH GROUP</div>
+      </article>
+      <article class="pixel-card p-6 reveal">
+        <div class="display text-7xl neon-pink">38%</div>
+        <p class="mt-4 text-sm text-white/85 leading-snug">Of dating-app users developed symptoms consistent with clinical depression over a 12-week study.</p>
+        <div class="label text-white/45 mt-3">RESEARCHGATE · 2024</div>
+      </article>
+      <article class="pixel-card yellow p-6 lg:row-span-1 reveal flex flex-col justify-center" style="background: linear-gradient(135deg, #1a0a14 0%, #0a0a0a 80%);">
+        <p class="display text-2xl md:text-3xl neon-yellow leading-tight">The problem isn't you.</p>
+        <p class="mt-3 text-white/75 leading-snug">It's that nobody's ever shown you the math on what's actually working in your photos.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS · 4 stages -->
+<section id="stage" class="py-16 md:py-24 bg-[#0d0d0d]">
+  <div class="max-w-[1300px] mx-auto px-5 md:px-10">
+    <div class="mb-10 md:mb-14">
+      <div class="label neon-pink mb-3">★ STAGE 04 · SELECT YOUR FIGHTER ★</div>
+      <h2 class="display text-5xl md:text-6xl lg:text-7xl">HOW IT WORKS.</h2>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 md:gap-8">
+      <div class="pixel-card p-6">
+        <div class="pixel text-2xl neon-pink mb-3">01</div>
+        <h3 class="display text-2xl md:text-3xl">UPLOAD</h3>
+        <p class="mt-3 text-sm text-white/75 leading-snug">Drop in photos and bio screenshots. We figure out which is which automatically.</p>
+      </div>
+      <div class="pixel-card cyan p-6">
+        <div class="pixel text-2xl neon-cyan mb-3">02</div>
+        <h3 class="display text-2xl md:text-3xl">SELECT</h3>
+        <p class="mt-3 text-sm text-white/75 leading-snug">Tinder, Hinge, Bumble — 12 supported. Pick up to 4 at once for a multi-app stack.</p>
+      </div>
+      <div class="pixel-card yellow p-6">
+        <div class="pixel text-2xl neon-yellow mb-3">03</div>
+        <h3 class="display text-2xl md:text-3xl">SCORE</h3>
+        <p class="mt-3 text-sm text-white/75 leading-snug">Photofeeler-style grading. Bio scanned for red flags. Prompts bucketed.</p>
+      </div>
+      <div class="pixel-card p-6">
+        <div class="pixel text-2xl neon-pink mb-3">04</div>
+        <h3 class="display text-2xl md:text-3xl">FIX</h3>
+        <p class="mt-3 text-sm text-white/75 leading-snug">Top fixes ranked by estimated lift, with research backing each one.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CHARACTER SELECT FEATURES -->
+<section class="py-16 md:py-24">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10">
+    <div class="grid md:grid-cols-12 gap-8 mb-10 md:mb-14">
+      <div class="md:col-span-7">
+        <div class="label neon-cyan mb-3">★ STAGE 05 · MOVESET ★</div>
+        <h2 class="display text-5xl md:text-6xl lg:text-7xl">EIGHT MOVES.<br><span class="neon-pink">ONE COMBO.</span></h2>
+      </div>
+      <figure class="md:col-span-5">
+        <img src="images/C2-character-select.jpg" alt="A 16-bit character-select grid of nine archetypes." class="w-full h-auto border-4 border-cyan-400" style="image-rendering: pixelated;">
+      </figure>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <article class="pixel-card p-5">
+        <div class="label neon-pink mb-2">PER-PLATFORM SCORING</div>
+        <h3 class="display text-xl">12 RUBRICS</h3>
+        <p class="mt-2 text-xs text-white/75">Tinder lead photo scored differently than Hinge — because the data says so.</p>
+      </article>
+      <article class="pixel-card cyan p-5">
+        <div class="label neon-cyan mb-2">PHOTOFEELER GRADING</div>
+        <h3 class="display text-xl">6 DIMENSIONS · 24 FLAGS</h3>
+        <p class="mt-2 text-xs text-white/75">Smile, eye contact, lighting, framing, background, authenticity. Plus boolean flags.</p>
+      </article>
+      <article class="pixel-card yellow p-5">
+        <div class="label neon-yellow mb-2">MULTI-APP PICKER</div>
+        <h3 class="display text-xl">UPLOAD 20. STACK 4 APPS.</h3>
+        <p class="mt-2 text-xs text-white/75">Recommended 6 for Bumble, 9 for Tinder, 6 for Hinge — in one pass.</p>
+      </article>
+      <article class="pixel-card p-5">
+        <div class="label neon-pink mb-2">BIO + PROMPTS</div>
+        <h3 class="display text-xl">PER-PROMPT VERDICT</h3>
+        <p class="mt-2 text-xs text-white/75">Humor / depth / cliché bucket. Plus a polished rewrite that fixes everything flagged.</p>
+      </article>
+      <article class="pixel-card cyan p-5">
+        <div class="label neon-cyan mb-2">VOICE</div>
+        <h3 class="display text-xl">COACH OR ROAST</h3>
+        <p class="mt-2 text-xs text-white/75">Same diagnosis, different delivery. Witty with teeth, never cruel.</p>
+      </article>
+      <article class="pixel-card p-5" style="border-color: var(--pink); box-shadow: 6px 6px 0 var(--yellow), 12px 12px 0 var(--crt);">
+        <div class="label neon-yellow mb-2">★ BONUS BOSS ★</div>
+        <h3 class="display text-xl neon-pink">FUCK-BOY DETECTOR</h3>
+        <p class="mt-2 text-xs text-white/75">Separate 0–100 score that flags red-flag patterns women told researchers they swipe left on.</p>
+      </article>
+      <article class="pixel-card yellow p-5">
+        <div class="label neon-yellow mb-2">MULTIPLIER</div>
+        <h3 class="display text-xl">84/100 = ≈3× BASELINE</h3>
+        <p class="mt-2 text-xs text-white/75">Every score converts to an estimated match-rate multiplier. Concrete, not abstract.</p>
+      </article>
+      <article class="pixel-card p-5">
+        <div class="label neon-pink mb-2">SAVE + SHARE</div>
+        <h3 class="display text-xl">PUBLIC LINK · COMPARE RUNS</h3>
+        <p class="mt-2 text-xs text-white/75">Every analysis is saved automatically. Send a friend. Compare past runs.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- HIGH SCORE / RESEARCH -->
+<section id="research" class="py-16 md:py-24 bg-[#0d0d0d] border-y-2 border-cyan-400/30">
+  <div class="max-w-[1300px] mx-auto px-5 md:px-10">
+    <div class="text-center mb-10 md:mb-14">
+      <div class="label neon-pink mb-3">★ STAGE 06 · HIGH SCORES ★</div>
+      <h2 class="display text-5xl md:text-6xl lg:text-7xl">BUILT ON ACTUAL RESEARCH.</h2>
+      <p class="mt-5 max-w-2xl mx-auto text-white/70">Not vibes. Published platform data, peer-reviewed studies, Photofeeler analyses. Every fix cites the source.</p>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <article class="pixel-card cyan p-6 text-center">
+        <div class="display text-6xl md:text-7xl neon-cyan">+47<span class="text-3xl">%</span></div>
+        <p class="mt-3 text-sm text-white/85 leading-snug">Hinge prompt likes lead to a date 47% more often than photo likes.</p>
+        <div class="label text-white/45 mt-3">HINGE · 2024</div>
+      </article>
+      <article class="pixel-card yellow p-6 text-center">
+        <div class="display text-6xl md:text-7xl neon-yellow">+102<span class="text-3xl">%</span></div>
+        <p class="mt-3 text-sm text-white/85 leading-snug">Forward-facing male headshots get 102% more likes than the average dating-app photo.</p>
+        <div class="label text-white/45 mt-3">HINGE PFP REPORT</div>
+      </article>
+      <article class="pixel-card cyan p-6 text-center">
+        <div class="display text-6xl md:text-7xl neon-cyan">+70<span class="text-3xl">%</span></div>
+        <p class="mt-3 text-sm text-white/85 leading-snug">Bumble's verified-profile badge increases match rate.</p>
+        <div class="label text-white/45 mt-3">BUMBLE PLATFORM</div>
+      </article>
+      <article class="pixel-card p-6 text-center">
+        <div class="display text-6xl md:text-7xl neon-pink">−90<span class="text-3xl">%</span></div>
+        <p class="mt-3 text-sm text-white/85 leading-snug">Bathroom selfies are 90% less likely to be liked.</p>
+        <div class="label text-white/45 mt-3">HINGE PFP REPORT</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER WITH BANANA SPRITE -->
+<section class="py-16 md:py-24">
+  <div class="max-w-[1300px] mx-auto px-5 md:px-10">
+    <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
+      <figure class="md:col-span-4 reveal">
+        <img src="images/C3-banana-sprite.jpg" alt="A 16-bit pixel-art sprite of a person in a banana suit holding a sunflower." class="w-full h-auto border-4 border-pink-500" style="image-rendering: pixelated;">
+        <figcaption class="label neon-yellow mt-3 text-center">★ HIDDEN CHARACTER UNLOCKED ★</figcaption>
+      </figure>
+      <div class="md:col-span-8">
+        <div class="label neon-cyan mb-3">★ DEV CREDITS ★</div>
+        <h2 class="display text-4xl md:text-5xl">BUILT BY A GUY IN A BANANA SUIT.</h2>
+        <p class="mt-5 text-lg text-white/80 leading-relaxed">
+          Don't Die Alone was built by <span class="text-white">Zack Ballantine</span> under the Banana Bytes umbrella. He's near Palm Springs, single, hands out 3,000+ sunflowers a year, pays for everything with $2 bills, and wears a banana suit for the entire month of September every year for suicide awareness. He built this because the existing dating-coach industry runs on $99/month subscriptions and bullshit, and friends kept sending him their profiles asking what was wrong.
+        </p>
+        <p class="mt-4 text-base text-white/55 italic">★ This app exists because the founder ran out of patience. ★</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="py-20 md:py-28 bg-black text-center relative overflow-hidden">
+  <div class="absolute inset-0 opacity-40" style="background: radial-gradient(900px 600px at 50% 50%, rgba(236,72,153,0.25), transparent 65%);"></div>
+  <div class="max-w-[1100px] mx-auto px-5 md:px-10 relative">
+    <div class="label neon-yellow blink mb-6">★ INSERT COIN ★</div>
+    <h2 class="display text-6xl md:text-7xl lg:text-9xl">
+      <span class="neon-pink">SCORE MY</span><br>
+      <span class="neon-cyan">PROFILE.</span>
+    </h2>
+    <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
+      ~60 seconds of upload. The honesty your group chat is too polite to give you. Free during beta. Cap of 5 free runs — after that, $5 via Venmo for 10 more.
+    </p>
+    <div class="mt-10">
+      <a href="https://dontdiealone.app/scan" class="btn-coin px-10 md:px-12 py-5 md:py-6 text-2xl md:text-3xl">★ READ ME TO FILTH ★</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item neon-cyan">PRESS START</span>
+    <span class="marquee-item neon-yellow">© BANANA BYTES 2026</span>
+    <span class="marquee-item neon-pink">★ INSERT COIN</span>
+    <span class="marquee-item neon-cyan">PRESS START</span>
+    <span class="marquee-item neon-yellow">© BANANA BYTES 2026</span>
+    <span class="marquee-item neon-pink">★ INSERT COIN</span>
+    <span class="marquee-item neon-cyan">PRESS START</span>
+    <span class="marquee-item neon-yellow">© BANANA BYTES 2026</span>
+    <span class="marquee-item neon-pink">★ INSERT COIN</span>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="py-10 md:py-12 bg-[#0a0a0a]">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10 grid md:grid-cols-3 gap-6 text-sm">
+    <div>
+      <div class="display text-2xl mb-2 neon-pink">Don't Die Alone</div>
+      <p class="text-white/55 leading-relaxed">A brutal, evidence-based read on your dating profile. Free during beta.</p>
+    </div>
+    <div>
+      <div class="label text-white/55 mb-3">DIRECTION</div>
+      <p><a href="index.html" class="hover:underline text-cyan-300">← BACK TO ALL 4 DIRECTIONS</a></p>
+    </div>
+    <div>
+      <div class="label text-white/55 mb-3">FINE PRINT</div>
+      <p class="text-xs text-white/45 leading-relaxed">© Banana Bytes 2026. Cap of 5 free runs per visitor. After that, $5 via Venmo for 10 more — DM the receipt.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Banana Bytes credit -->
+<div style="text-align:center; padding:1.5rem 1rem; font-size:0.7rem; letter-spacing:0.05em; opacity:0.45; background:#000; color:#fff;">
+  <a href="https://instagram.com/BananaCares" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+    Mockup created by Banana Bytes
+  </a>
+</div>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>

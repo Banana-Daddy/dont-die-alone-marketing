@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Don't Die Alone — Score My Profile · Locker Room</title>
+<meta name="description" content="A brutal, evidence-based read on your dating profile. Upload your screenshots. We score every photo, your bio, and your prompts against published platform research.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Don't Die Alone">
+<meta property="og:title" content="Don't Die Alone — Score my profile · Locker Room">
+<meta property="og:description" content="0.6%. That's the average male match rate on Tinder. We score every photo and prompt against published platform research and hand you a fix list.">
+<meta property="og:url" content="https://banana-daddy.github.io/dont-die-alone-marketing/direction-locker-room.html">
+<meta property="og:image" content="https://banana-daddy.github.io/dont-die-alone-marketing/images/og-locker.jpg">
+<meta property="og:image:secure_url" content="https://banana-daddy.github.io/dont-die-alone-marketing/images/og-locker.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A scoreboard showing YOU 0.6% / LEAGUE 10.5% in amber LED above empty bleachers.">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Don't Die Alone — Score my profile · Locker Room">
+<meta name="twitter:description" content="0.6%. That's the average male match rate on Tinder. We score every photo and prompt against published platform research.">
+<meta name="twitter:image" content="https://banana-daddy.github.io/dont-die-alone-marketing/images/og-locker.jpg">
+<meta name="twitter:image:alt" content="A scoreboard showing YOU 0.6% / LEAGUE 10.5% in amber LED above empty bleachers.">
+
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="apple-touch-icon" sizes="512x512" href="images/favicon-512.png">
+<link rel="canonical" href="https://banana-daddy.github.io/dont-die-alone-marketing/direction-locker-room.html">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800;900&family=Barlow:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --court: #0A0A0A;
+    --light: #FAFAFA;
+    --amber: #FBBF24;
+    --amber-deep: #D97706;
+    --ref-red: #DC2626;
+    --rule: rgba(250,250,250,0.10);
+    --steel: #2A2A2A;
+  }
+  * { -webkit-font-smoothing: antialiased; }
+  html, body { background: var(--court); color: var(--light); font-family: 'Barlow', system-ui, sans-serif; }
+  .display { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; letter-spacing: -0.02em; line-height: 0.86; text-transform: uppercase; }
+  .display-tight { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; letter-spacing: -0.01em; line-height: 1; text-transform: uppercase; }
+  .mono { font-family: 'JetBrains Mono', monospace; font-feature-settings: 'tnum'; }
+  .label { font-family: 'JetBrains Mono', monospace; text-transform: uppercase; letter-spacing: 0.22em; font-size: 0.7rem; font-weight: 500; }
+
+  /* Scoreboard LED effect */
+  .led {
+    color: var(--amber);
+    text-shadow:
+      0 0 6px rgba(251,191,36,0.6),
+      0 0 18px rgba(251,191,36,0.3),
+      0 0 38px rgba(217,119,6,0.18);
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+  }
+  .led-panel {
+    background: linear-gradient(180deg, #050505 0%, #0a0a0a 60%, #0d0d0d 100%);
+    border: 1px solid rgba(251,191,36,0.25);
+    box-shadow:
+      inset 0 0 60px rgba(0,0,0,0.8),
+      0 0 0 6px var(--steel),
+      0 30px 80px rgba(0,0,0,0.6);
+  }
+  .led-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(251,191,36,0.06) 1px, transparent 1.5px);
+    background-size: 6px 6px;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  /* Ref-stripe section divider */
+  .ref-stripes {
+    height: 14px;
+    background: repeating-linear-gradient(
+      135deg,
+      var(--light) 0,
+      var(--light) 12px,
+      #000 12px,
+      #000 24px
+    );
+  }
+
+  .stat-card {
+    background: #111;
+    border: 1px solid var(--rule);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+  .stat-card:hover { transform: translateY(-2px); border-color: rgba(251,191,36,0.4); }
+
+  .stencil {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .btn-amber {
+    background: var(--amber);
+    color: #0a0a0a;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+    cursor: pointer;
+  }
+  .btn-amber:hover { transform: translateY(-2px); box-shadow: 0 16px 40px rgba(251,191,36,0.35); }
+
+  .field-line {
+    background: var(--amber);
+    height: 2px;
+  }
+
+  ::selection { background: var(--amber); color: #000; }
+
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+
+  /* hero parallax frame */
+  .scoreboard-frame {
+    position: relative;
+    background: #000;
+    overflow: hidden;
+    aspect-ratio: 16/9;
+  }
+  .scoreboard-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 0%, transparent 60%, rgba(10,10,10,0.85) 100%);
+  }
+
+  /* warning / fuck-boy red label */
+  .ref-flag { color: var(--ref-red); }
+  .ref-flag-bg { background: var(--ref-red); color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="border-b border-white/10 sticky top-0 z-40 backdrop-blur-md bg-black/70">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10 py-3 md:py-4 flex items-center justify-between gap-4">
+    <a href="/" class="flex items-baseline gap-3">
+      <span class="display text-xl md:text-2xl">Don't Die Alone</span>
+      <span class="label hidden md:inline text-amber-400">Score · Fix · Match</span>
+    </a>
+    <div class="flex items-center gap-2 md:gap-4">
+      <a href="#how" class="label hidden sm:inline text-white/55 hover:text-white">How it works</a>
+      <a href="#research" class="label hidden sm:inline text-white/55 hover:text-white">Research</a>
+      <a href="https://dontdiealone.app/scan" class="btn-amber px-4 md:px-5 py-2 md:py-2.5 text-sm md:text-base">Score my profile</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="relative pt-10 md:pt-16 pb-12 md:pb-20 overflow-hidden">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10">
+    <!-- Scoreboard hero image -->
+    <figure class="scoreboard-frame rounded-sm border border-amber-500/30 mb-8 md:mb-12 reveal">
+      <img src="images/A1-scoreboard-hero.jpg" alt="Stadium scoreboard reading YOU 0.6% / LEAGUE 10.5% in amber LED dot-matrix above empty wooden bleachers." class="w-full h-full object-cover" loading="eager">
+    </figure>
+
+    <div class="grid md:grid-cols-12 gap-8 md:gap-12">
+      <div class="md:col-span-8">
+        <div class="label text-amber-400 mb-4">⌧ The dating issue · 2026 season</div>
+        <h1 class="display text-[3.5rem] sm:text-7xl md:text-8xl lg:text-[8.5rem]">
+          Why aren't <span class="text-amber-400">you</span> matching?<br>
+          <span class="ref-flag">Find out in 60 seconds.</span>
+        </h1>
+        <p class="mt-6 md:mt-8 text-lg md:text-xl text-white/75 max-w-2xl leading-relaxed">
+          Upload your screenshots. We score every photo, your bio, and your prompts against published platform research. You leave with a fix list ranked by estimated match-rate lift.
+        </p>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <a href="https://dontdiealone.app/scan" class="btn-amber px-7 py-4 text-lg">Score my profile</a>
+          <span class="label text-white/55">Free in beta · ~60 sec · No login</span>
+        </div>
+      </div>
+
+      <!-- Hero stat bar -->
+      <aside class="md:col-span-4 reveal">
+        <div class="led-panel relative rounded-sm p-5 md:p-6 space-y-5">
+          <div>
+            <div class="led text-5xl md:text-6xl">0.6%</div>
+            <div class="label text-white/55 mt-1">Avg male match rate on Tinder</div>
+            <div class="mono text-[10px] text-amber-400/70 mt-1">Tyson et al · 2016</div>
+          </div>
+          <div class="border-t border-amber-500/20 pt-5">
+            <div class="led text-5xl md:text-6xl">63%</div>
+            <div class="label text-white/55 mt-1">US men under 30 are single</div>
+            <div class="mono text-[10px] text-amber-400/70 mt-1">Pew Research · 2022</div>
+          </div>
+          <div class="border-t border-amber-500/20 pt-5">
+            <div class="led text-5xl md:text-6xl">74%</div>
+            <div class="label text-white/55 mt-1">Of men feel emotionally exhausted by dating apps</div>
+            <div class="mono text-[10px] text-amber-400/70 mt-1">Forbes Health · 2024</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<div class="ref-stripes"></div>
+
+<!-- WHY THIS EXISTS -->
+<section id="why" class="py-16 md:py-24 bg-[#0d0d0d]">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10">
+    <div class="grid md:grid-cols-12 gap-8 md:gap-12 mb-10 md:mb-16">
+      <div class="md:col-span-4">
+        <div class="label text-amber-400 mb-3">Section 02 · Why we built this</div>
+        <h2 class="display text-5xl md:text-6xl lg:text-7xl">This isn't a vibes problem.<br><span class="text-amber-400">It's a data problem.</span></h2>
+      </div>
+      <div class="md:col-span-7 md:col-start-6">
+        <p class="text-lg md:text-xl text-white/75 leading-relaxed">
+          Loneliness in young men isn't a meme — it's a measurable health crisis. And the apps that promised to fix it are statistically making it worse. Don't Die Alone exists because you deserve actual feedback, not another swipe down.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 md:gap-5">
+      <article class="stat-card p-6 reveal">
+        <div class="display text-5xl md:text-6xl text-amber-400 mb-3">29%</div>
+        <p class="text-sm text-white/85 leading-snug">Increased risk of premature death from social isolation — equivalent to smoking up to 15 cigarettes a day.</p>
+        <div class="mono text-[10px] text-white/45 mt-3">U.S. Surgeon General · 2023</div>
+      </article>
+      <article class="stat-card p-6 reveal">
+        <div class="display text-5xl md:text-6xl text-amber-400 mb-3">25%</div>
+        <p class="text-sm text-white/85 leading-snug">Of young US men feel lonely "a lot of the day" — the largest gap between young men and the rest of the developed world.</p>
+        <div class="mono text-[10px] text-white/45 mt-3">Gallup World Poll · 2025</div>
+      </article>
+      <article class="stat-card p-6 reveal">
+        <div class="display text-5xl md:text-6xl text-amber-400 mb-3">5×</div>
+        <p class="text-sm text-white/85 leading-snug">More American men report having no close friends today than in 1990 (15% vs 3%).</p>
+        <div class="mono text-[10px] text-white/45 mt-3">Survey Center on American Life · 2021</div>
+      </article>
+      <article class="stat-card p-6 reveal">
+        <div class="display text-5xl md:text-6xl text-amber-400 mb-3">52%</div>
+        <p class="text-sm text-white/85 leading-snug">Of men on Hinge get fewer than one match per day.</p>
+        <div class="mono text-[10px] text-white/45 mt-3">Hinge / Match Group</div>
+      </article>
+      <article class="stat-card p-6 reveal">
+        <div class="display text-5xl md:text-6xl text-amber-400 mb-3">38%</div>
+        <p class="text-sm text-white/85 leading-snug">Of dating-app users developed symptoms consistent with clinical depression over a 12-week study.</p>
+        <div class="mono text-[10px] text-white/45 mt-3">ResearchGate · 2024</div>
+      </article>
+    </div>
+
+    <p class="mt-12 md:mt-16 max-w-3xl text-lg md:text-xl text-white/65 leading-relaxed">
+      The problem isn't you. The problem is that <span class="text-white">nobody's ever shown you the math</span> on what's actually working in your photos and what isn't.
+    </p>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="relative py-16 md:py-24" style="background: url('images/A2-locker-texture.jpg') center/cover; background-attachment: fixed;">
+  <div class="absolute inset-0 bg-black/82"></div>
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10 relative">
+    <div class="mb-10 md:mb-16">
+      <div class="label text-amber-400 mb-3">Section 03 · The play</div>
+      <h2 class="display text-5xl md:text-6xl lg:text-7xl">How it works.</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-6">
+      <div class="stat-card p-6 md:p-8 relative reveal">
+        <div class="led text-7xl md:text-8xl mb-2">01</div>
+        <h3 class="display text-2xl md:text-3xl mt-2">Upload</h3>
+        <p class="mt-3 text-white/75 leading-snug">Drop in your photos and any bio screenshots. We figure out which is which automatically.</p>
+      </div>
+      <div class="stat-card p-6 md:p-8 reveal">
+        <div class="led text-7xl md:text-8xl mb-2">02</div>
+        <h3 class="display text-2xl md:text-3xl mt-2">Pick your apps</h3>
+        <p class="mt-3 text-white/75 leading-snug">Tinder, Hinge, Bumble — 12 supported. Or pick up to 4 at once for a multi-app stack recommendation.</p>
+      </div>
+      <div class="stat-card p-6 md:p-8 reveal">
+        <div class="led text-7xl md:text-8xl mb-2">03</div>
+        <h3 class="display text-2xl md:text-3xl mt-2">We score it</h3>
+        <p class="mt-3 text-white/75 leading-snug">Every photo gets graded on Photofeeler-style dimensions. Your bio gets scanned for red-flag phrases. Your prompts get bucketed.</p>
+      </div>
+      <div class="stat-card p-6 md:p-8 reveal">
+        <div class="led text-7xl md:text-8xl mb-2">04</div>
+        <h3 class="display text-2xl md:text-3xl mt-2">Get a fix list</h3>
+        <p class="mt-3 text-white/75 leading-snug">Top fixes ranked by estimated match-rate lift, with the published research backing each one. Plus an optional bio rewrite.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ref-stripes"></div>
+
+<!-- FEATURES -->
+<section class="py-16 md:py-24 bg-[#0a0a0a]">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10">
+    <div class="grid md:grid-cols-12 gap-8 mb-10 md:mb-16">
+      <div class="md:col-span-7">
+        <div class="label text-amber-400 mb-3">Section 04 · The roster</div>
+        <h2 class="display text-5xl md:text-6xl lg:text-7xl">Eight ways<br>we read you to <span class="ref-flag">filth</span>.</h2>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+      <article class="stat-card p-6">
+        <div class="label text-amber-400">Per-platform scoring</div>
+        <h3 class="display-tight text-2xl md:text-3xl mt-2">12 rubrics. 12 different games.</h3>
+        <p class="mt-3 text-white/75 leading-snug">Your Tinder lead photo is scored differently than your Hinge lead — because the data says they should be.</p>
+      </article>
+      <article class="stat-card p-6">
+        <div class="label text-amber-400">Photofeeler-style grading</div>
+        <h3 class="display-tight text-2xl md:text-3xl mt-2">Six dimensions. 24 boolean flags.</h3>
+        <p class="mt-3 text-white/75 leading-snug">Smile, eye contact, lighting, framing, background, authenticity. Plus detected items: sunglasses, mirror selfie, fish, exotic car, etc.</p>
+      </article>
+      <article class="stat-card p-6">
+        <div class="label text-amber-400">Multi-platform best picker</div>
+        <h3 class="display-tight text-2xl md:text-3xl mt-2">Upload 20. Get the best stack for 4 apps.</h3>
+        <p class="mt-3 text-white/75 leading-snug">Recommended 6 for Bumble, 9 for Tinder, 6 for Hinge — in one pass. With swap-in alternates.</p>
+      </article>
+      <article class="stat-card p-6">
+        <div class="label text-amber-400">Bio + prompts breakdown</div>
+        <h3 class="display-tight text-2xl md:text-3xl mt-2">Per-prompt verdicts. Polished rewrite.</h3>
+        <p class="mt-3 text-white/75 leading-snug">Humor / depth / conversation-starter / cliché bucket, specificity flag, one-line critique. Plus a rewrite that fixes everything flagged.</p>
+      </article>
+      <article class="stat-card p-6">
+        <div class="label text-amber-400">Coach or Roast voice</div>
+        <h3 class="display-tight text-2xl md:text-3xl mt-2">Same diagnosis. Different delivery.</h3>
+        <p class="mt-3 text-white/75 leading-snug">Coach is constructive and warm. Roast is witty with teeth. Never cruel, never punching down.</p>
+      </article>
+      <article class="stat-card p-6 border-2" style="border-color: var(--ref-red);">
+        <div class="label ref-flag">⚠ Penalty box</div>
+        <h3 class="display-tight text-2xl md:text-3xl mt-2 ref-flag">Fuck-Boy Detector.</h3>
+        <p class="mt-3 text-white/75 leading-snug">Separate 0–100 score that flags red-flag patterns women told researchers they swipe left on. Gym mirror, exotic car, "no drama" bios.</p>
+      </article>
+      <article class="stat-card p-6">
+        <div class="label text-amber-400">Match-rate multiplier</div>
+        <h3 class="display-tight text-2xl md:text-3xl mt-2">"Bumble: 84/100" → "≈3× baseline."</h3>
+        <p class="mt-3 text-white/75 leading-snug">Every score converts to an estimated match-rate multiplier. Concrete, not abstract.</p>
+      </article>
+      <article class="stat-card p-6">
+        <div class="label text-amber-400">Save + share</div>
+        <h3 class="display-tight text-2xl md:text-3xl mt-2">Public link. Compare runs.</h3>
+        <p class="mt-3 text-white/75 leading-snug">Every analysis is saved automatically. Send a friend the verdict, or come back and compare.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BUILT ON RESEARCH -->
+<section id="research" class="py-16 md:py-24 bg-[#0d0d0d]">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10">
+    <div class="grid md:grid-cols-12 gap-8 mb-10 md:mb-16">
+      <div class="md:col-span-7">
+        <div class="label text-amber-400 mb-3">Section 05 · The receipts</div>
+        <h2 class="display text-5xl md:text-6xl lg:text-7xl">Built on actual<br>research.</h2>
+      </div>
+      <div class="md:col-span-5 md:pt-12">
+        <p class="text-lg text-white/75 leading-relaxed">
+          The scoring isn't vibes. It's referencing published platform data, peer-reviewed studies, and Photofeeler analyses. Every fix in your top-fixes list cites the source.
+        </p>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+      <article class="stat-card p-6">
+        <div class="display text-6xl md:text-7xl text-amber-400">+47<span class="text-3xl md:text-4xl">%</span></div>
+        <p class="mt-3 text-sm text-white/85 leading-snug">Hinge prompt likes are 47% more likely to lead to a date than photo likes.</p>
+        <div class="mono text-[10px] text-white/45 mt-3">Hinge published data · 2024</div>
+      </article>
+      <article class="stat-card p-6">
+        <div class="display text-6xl md:text-7xl text-amber-400">+102<span class="text-3xl md:text-4xl">%</span></div>
+        <p class="mt-3 text-sm text-white/85 leading-snug">Forward-facing male headshots get 102% more likes than the average dating-app photo.</p>
+        <div class="mono text-[10px] text-white/45 mt-3">Hinge Profile Picture Report</div>
+      </article>
+      <article class="stat-card p-6">
+        <div class="display text-6xl md:text-7xl text-amber-400">+70<span class="text-3xl md:text-4xl">%</span></div>
+        <p class="mt-3 text-sm text-white/85 leading-snug">Bumble's verified-profile badge increases match rate.</p>
+        <div class="mono text-[10px] text-white/45 mt-3">Bumble platform data</div>
+      </article>
+      <article class="stat-card p-6">
+        <div class="display text-6xl md:text-7xl ref-flag">−90<span class="text-3xl md:text-4xl">%</span></div>
+        <p class="mt-3 text-sm text-white/85 leading-snug">Bathroom selfies are 90% less likely to be liked.</p>
+        <div class="mono text-[10px] text-white/45 mt-3">Hinge Profile Picture Report</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="relative py-16 md:py-24" style="background: url('images/A4-empty-bleachers.jpg') center/cover;">
+  <div class="absolute inset-0 bg-black/85"></div>
+  <div class="max-w-[1100px] mx-auto px-5 md:px-10 relative">
+    <div class="label text-amber-400 mb-3">Section 06 · The locker note</div>
+    <h2 class="display text-5xl md:text-6xl">Built by a guy in a banana suit.</h2>
+    <p class="mt-6 text-lg md:text-xl text-white/80 leading-relaxed">
+      Don't Die Alone was built by <span class="text-white">Zack Ballantine</span> under the Banana Bytes umbrella. He's near Palm Springs, single, hands out 3,000+ sunflowers a year as random acts of kindness, pays for everything with $2 bills, and wears a banana suit for the entire month of September every year for suicide awareness. He built this because the existing dating-coach industry runs on $99/month subscriptions and bullshit, and friends kept sending him their profiles asking what was wrong.
+    </p>
+    <p class="mt-4 text-base md:text-lg text-white/55 italic">This app exists because the founder ran out of patience.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-20 md:py-28 bg-[#0a0a0a] border-t border-amber-500/30">
+  <div class="max-w-[1100px] mx-auto px-5 md:px-10 text-center">
+    <div class="label text-amber-400 mb-4">⌧ The whistle</div>
+    <h2 class="display text-6xl md:text-7xl lg:text-8xl">
+      Score my <span class="text-amber-400">profile.</span>
+    </h2>
+    <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
+      ~60 seconds of upload. The honesty your group chat is too polite to give you. Free during beta. Cap of 5 free runs per visitor — after that it's $5 via Venmo for 10 more.
+    </p>
+    <div class="mt-10">
+      <a href="https://dontdiealone.app/scan" class="btn-amber px-10 py-5 text-xl md:text-2xl inline-block">Read me to filth →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-white/10 py-10 md:py-12 bg-black">
+  <div class="max-w-[1500px] mx-auto px-5 md:px-10 grid md:grid-cols-3 gap-6">
+    <div>
+      <div class="display text-2xl mb-2">Don't Die Alone</div>
+      <p class="text-sm text-white/55 leading-relaxed">A brutal, evidence-based read on your dating profile. Free during beta.</p>
+    </div>
+    <div>
+      <div class="label text-white/55 mb-3">Direction</div>
+      <p class="text-sm text-white/65"><a href="index.html" class="hover:text-amber-400">← Back to all 4 directions</a></p>
+    </div>
+    <div>
+      <div class="label text-white/55 mb-3">Fine print</div>
+      <p class="text-xs text-white/45 leading-relaxed">© Banana Bytes 2026. Free during beta. Cap of 5 free runs per visitor. After that, $5 via Venmo for 10 more — DM the receipt.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Banana Bytes credit -->
+<div style="text-align:center; padding:1.5rem 1rem; font-size:0.7rem; letter-spacing:0.05em; opacity:0.45; background:#000; color:#fff;">
+  <a href="https://instagram.com/BananaCares" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+    Mockup created by Banana Bytes
+  </a>
+</div>
+
+<script>
+  // Reveal-on-scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
