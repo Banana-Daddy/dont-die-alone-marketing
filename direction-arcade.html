@@ -196,6 +196,7 @@
   /* Blink */
   @keyframes blink { 0%,49% { opacity: 1; } 50%,100% { opacity: 0.25; } }
   .blink { animation: blink 1.2s infinite; }
+  @media (prefers-reduced-motion: reduce) { .blink { animation: none; opacity: 1; } }
 </style>
 </head>
 <body>
@@ -221,7 +222,7 @@
 
 <!-- NAV -->
 <header class="border-b border-white/10 sticky top-0 z-40 backdrop-blur-md bg-black/85">
-  <div class="max-w-[1500px] mx-auto px-5 md:px-10 py-3 md:py-4 flex items-center justify-between gap-4">
+  <div class="max-w-[1300px] mx-auto px-5 md:px-10 py-3 md:py-4 flex items-center justify-between gap-4">
     <a href="index.html" class="display text-2xl md:text-3xl neon-pink">Don't Die Alone</a>
     <div class="flex items-center gap-3 md:gap-5">
       <a href="#stage" class="label hidden sm:inline text-white/55 hover:text-white">PLAY</a>
@@ -232,6 +233,8 @@
   </div>
 </header>
 
+<main>
+
 <!-- HERO · CABINET -->
 <section class="relative pt-10 md:pt-16 pb-12 md:pb-20 overflow-hidden">
   <div class="absolute inset-0 opacity-30" style="background: radial-gradient(800px 600px at 50% 20%, rgba(236,72,153,0.18), transparent 60%);"></div>
@@ -241,7 +244,7 @@
     </div>
 
     <div class="text-center max-w-4xl mx-auto">
-      <div class="label neon-yellow blink mb-4">★ STAGE 01 · THE READ ★</div>
+      <div class="label neon-yellow blink mb-4"><span aria-hidden="true">★</span> STAGE 01 · THE READ <span aria-hidden="true">★</span></div>
       <h1 class="display text-[3.5rem] sm:text-7xl md:text-8xl lg:text-9xl">
         <span class="neon-pink">Why aren't you</span><br>
         <span class="neon-cyan">matching?</span>
@@ -259,10 +262,10 @@
 </section>
 
 <!-- LIFEBARS -->
-<section class="crt-backdrop py-16 md:py-24 bg-[#0d0d0d] border-y-2 border-pink-500/40">
+<section id="status" class="crt-backdrop py-16 md:py-24 bg-[#0d0d0d] border-y-2 border-pink-500/40 scroll-mt-20">
   <div class="max-w-[1300px] mx-auto px-5 md:px-10">
     <div class="text-center mb-10 md:mb-14">
-      <div class="label neon-cyan mb-3">★ STAGE 02 · STATUS ★</div>
+      <div class="label neon-cyan mb-3"><span aria-hidden="true">★</span> STAGE 02 · STATUS <span aria-hidden="true">★</span></div>
       <h2 class="display text-5xl md:text-6xl lg:text-7xl">YOUR HP / THEIR HP.</h2>
       <p class="mt-5 max-w-2xl mx-auto text-white/70">Four numbers. Same energy as a fighting-game life screen — except the boss is the algorithm.</p>
     </div>
@@ -275,16 +278,16 @@
           <span class="display text-4xl neon-pink">0.6%</span>
         </div>
         <div class="lifebar-track">
-          <div class="lifebar-fill" style="width: 6%;" data-target="6"></div>
+          <div class="lifebar-fill" style="width: 0%;" data-target="6"></div>
         </div>
         <div class="flex justify-between items-baseline mt-5 mb-2">
           <span class="label neon-cyan">P2 · WOMEN · TINDER MATCH RATE</span>
           <span class="display text-4xl neon-cyan">10.5%</span>
         </div>
         <div class="lifebar-track">
-          <div class="lifebar-fill" style="width: 100%;" data-target="100"></div>
+          <div class="lifebar-fill" style="width: 0%;" data-target="100"></div>
         </div>
-        <div class="label text-white/45 mt-2">SOURCE: TYSON ET AL · PEER-REVIEWED · 2016</div>
+        <div class="label text-white/60 mt-2">SOURCE: TYSON ET AL · PEER-REVIEWED · 2016</div>
       </div>
 
       <div class="grid md:grid-cols-2 gap-6 md:gap-10 pt-8 border-t border-white/10">
@@ -293,16 +296,16 @@
             <span class="label neon-yellow">SINGLE MEN UNDER 30</span>
             <span class="display text-3xl neon-yellow">63%</span>
           </div>
-          <div class="lifebar-track"><div class="lifebar-fill" style="width: 63%;"></div></div>
-          <div class="label text-white/45 mt-2">PEW RESEARCH · 2022</div>
+          <div class="lifebar-track"><div class="lifebar-fill" style="width: 0%;" data-target="63"></div></div>
+          <div class="label text-white/60 mt-2">PEW RESEARCH · 2022</div>
         </div>
         <div>
           <div class="flex justify-between items-baseline mb-2">
             <span class="label neon-pink">EMOTIONALLY EXHAUSTED</span>
             <span class="display text-3xl neon-pink">74%</span>
           </div>
-          <div class="lifebar-track"><div class="lifebar-fill" style="width: 74%;"></div></div>
-          <div class="label text-white/45 mt-2">FORBES HEALTH · 2024</div>
+          <div class="lifebar-track"><div class="lifebar-fill" style="width: 0%;" data-target="74"></div></div>
+          <div class="label text-white/60 mt-2">FORBES HEALTH · 2024</div>
         </div>
       </div>
     </div>
@@ -313,7 +316,7 @@
 <section class="py-16 md:py-24">
   <div class="max-w-[1300px] mx-auto px-5 md:px-10">
     <div class="mb-10 md:mb-14">
-      <div class="label neon-pink mb-3">★ STAGE 03 · DISPATCH ★</div>
+      <div class="label neon-pink mb-3"><span aria-hidden="true">★</span> STAGE 03 · DISPATCH <span aria-hidden="true">★</span></div>
       <h2 class="display text-5xl md:text-6xl lg:text-7xl">
         <span class="neon-cyan">THIS IS NOT</span><br>
         <span class="neon-pink">A VIBES PROBLEM.</span>
@@ -327,27 +330,27 @@
       <article class="pixel-card p-6 reveal">
         <div class="display text-7xl neon-pink">29%</div>
         <p class="mt-4 text-sm text-white/85 leading-snug">Increased risk of premature death from social isolation — equivalent to smoking up to 15 cigarettes a day.</p>
-        <div class="label text-white/45 mt-3">U.S. SURGEON GENERAL · 2023</div>
+        <div class="label text-white/60 mt-3">U.S. SURGEON GENERAL · 2023</div>
       </article>
       <article class="pixel-card cyan p-6 reveal">
         <div class="display text-7xl neon-cyan">25%</div>
         <p class="mt-4 text-sm text-white/85 leading-snug">Young US men who feel lonely "a lot of the day" — the largest gap in the developed world.</p>
-        <div class="label text-white/45 mt-3">GALLUP WORLD POLL · 2025</div>
+        <div class="label text-white/60 mt-3">GALLUP WORLD POLL · 2025</div>
       </article>
       <article class="pixel-card yellow p-6 reveal">
         <div class="display text-7xl neon-yellow">5×</div>
         <p class="mt-4 text-sm text-white/85 leading-snug">More American men report having no close friends today than in 1990 (15% vs 3%).</p>
-        <div class="label text-white/45 mt-3">SURVEY CENTER ON AMERICAN LIFE · 2021</div>
+        <div class="label text-white/60 mt-3">SURVEY CENTER ON AMERICAN LIFE · 2021</div>
       </article>
       <article class="pixel-card cyan p-6 reveal">
         <div class="display text-7xl neon-cyan">52%</div>
         <p class="mt-4 text-sm text-white/85 leading-snug">Men on Hinge who get fewer than one match per day.</p>
-        <div class="label text-white/45 mt-3">HINGE / MATCH GROUP</div>
+        <div class="label text-white/60 mt-3">HINGE / MATCH GROUP</div>
       </article>
       <article class="pixel-card p-6 reveal">
         <div class="display text-7xl neon-pink">38%</div>
         <p class="mt-4 text-sm text-white/85 leading-snug">Dating-app users who developed clinical depression symptoms over a 12-week study.</p>
-        <div class="label text-white/45 mt-3">RESEARCHGATE · 2024</div>
+        <div class="label text-white/60 mt-3">RESEARCHGATE · 2024</div>
       </article>
       <article class="pixel-card yellow p-6 lg:row-span-1 reveal flex flex-col justify-center" style="background: linear-gradient(135deg, #1a0a14 0%, #0a0a0a 80%);">
         <p class="display text-2xl md:text-3xl neon-yellow leading-tight">The problem isn't you.</p>
@@ -358,10 +361,10 @@
 </section>
 
 <!-- HOW IT WORKS · 4 stages -->
-<section id="stage" class="py-16 md:py-24 bg-[#0d0d0d]">
+<section id="stage" class="py-16 md:py-24 bg-[#0d0d0d] scroll-mt-20">
   <div class="max-w-[1300px] mx-auto px-5 md:px-10">
     <div class="mb-10 md:mb-14">
-      <div class="label neon-yellow mb-3">★ STAGE 04 · SELECT YOUR FIGHTER ★</div>
+      <div class="label neon-yellow mb-3"><span aria-hidden="true">★</span> STAGE 04 · SELECT YOUR FIGHTER <span aria-hidden="true">★</span></div>
       <h2 class="display text-5xl md:text-6xl lg:text-7xl">HOW IT WORKS.</h2>
     </div>
 
@@ -392,10 +395,10 @@
 
 <!-- CHARACTER SELECT FEATURES -->
 <section class="py-16 md:py-24">
-  <div class="max-w-[1500px] mx-auto px-5 md:px-10">
+  <div class="max-w-[1300px] mx-auto px-5 md:px-10">
     <div class="grid md:grid-cols-12 gap-8 mb-10 md:mb-14">
       <div class="md:col-span-7">
-        <div class="label neon-cyan mb-3">★ STAGE 05 · MOVESET ★</div>
+        <div class="label neon-cyan mb-3"><span aria-hidden="true">★</span> STAGE 05 · MOVESET <span aria-hidden="true">★</span></div>
         <h2 class="display text-5xl md:text-6xl lg:text-7xl"><span class="block">EIGHT MOVES.</span><span class="block neon-pink">ONE COMBO.</span></h2>
       </div>
       <figure class="md:col-span-5">
@@ -430,7 +433,7 @@
         <p class="mt-2 text-xs text-white/75">Same diagnosis, different delivery. Witty with teeth, never cruel.</p>
       </article>
       <article class="pixel-card p-5" style="border-color: var(--pink); border-width: 3px;">
-        <div class="label neon-yellow mb-2">★ BONUS BOSS ★</div>
+        <div class="label neon-yellow mb-2"><span aria-hidden="true">★</span> BONUS BOSS <span aria-hidden="true">★</span></div>
         <h3 class="display text-xl neon-pink">FUCK-BOY DETECTOR</h3>
         <p class="mt-2 text-xs text-white/75">Separate 0–100 score that flags red-flag patterns women told researchers they swipe left on.</p>
       </article>
@@ -449,10 +452,10 @@
 </section>
 
 <!-- HIGH SCORE / RESEARCH -->
-<section id="research" class="py-16 md:py-24 bg-[#0d0d0d] border-y-2 border-cyan-400/30">
+<section id="research" class="py-16 md:py-24 bg-[#0d0d0d] border-y-2 border-cyan-400/30 scroll-mt-20">
   <div class="max-w-[1300px] mx-auto px-5 md:px-10">
     <div class="text-center mb-10 md:mb-14">
-      <div class="label neon-pink mb-3">★ STAGE 06 · HIGH SCORES ★</div>
+      <div class="label neon-pink mb-3"><span aria-hidden="true">★</span> STAGE 06 · HIGH SCORES <span aria-hidden="true">★</span></div>
       <h2 class="display text-5xl md:text-6xl lg:text-7xl">BUILT ON ACTUAL RESEARCH.</h2>
       <p class="mt-5 max-w-2xl mx-auto text-white/70">Not vibes. Published platform data, peer-reviewed studies, Photofeeler analyses. Every fix cites the source.</p>
     </div>
@@ -461,22 +464,22 @@
       <article class="pixel-card cyan p-6 text-center">
         <div class="display text-5xl md:text-7xl neon-cyan">+47<span class="text-2xl md:text-3xl">%</span></div>
         <p class="mt-3 text-sm text-white/85 leading-snug">Hinge prompt likes lead to a date 47% more often than photo likes.</p>
-        <div class="label text-white/45 mt-3">HINGE · 2024</div>
+        <div class="label text-white/60 mt-3">HINGE · 2024</div>
       </article>
       <article class="pixel-card yellow p-6 text-center">
         <div class="display text-5xl md:text-7xl neon-yellow">+102<span class="text-2xl md:text-3xl">%</span></div>
         <p class="mt-3 text-sm text-white/85 leading-snug">Forward-facing male headshots get 102% more likes than the average dating-app photo.</p>
-        <div class="label text-white/45 mt-3">HINGE PFP REPORT</div>
+        <div class="label text-white/60 mt-3">HINGE PFP REPORT</div>
       </article>
       <article class="pixel-card cyan p-6 text-center">
         <div class="display text-5xl md:text-7xl neon-cyan">+70<span class="text-2xl md:text-3xl">%</span></div>
         <p class="mt-3 text-sm text-white/85 leading-snug">Bumble's verified-profile badge increases match rate.</p>
-        <div class="label text-white/45 mt-3">BUMBLE PLATFORM</div>
+        <div class="label text-white/60 mt-3">BUMBLE PLATFORM</div>
       </article>
       <article class="pixel-card p-6 text-center">
         <div class="display text-5xl md:text-7xl neon-pink">−90<span class="text-2xl md:text-3xl">%</span></div>
         <p class="mt-3 text-sm text-white/85 leading-snug">Bathroom selfies are 90% less likely to be liked.</p>
-        <div class="label text-white/45 mt-3">HINGE PFP REPORT</div>
+        <div class="label text-white/60 mt-3">HINGE PFP REPORT</div>
       </article>
     </div>
   </div>
@@ -487,16 +490,19 @@
   <div class="max-w-[1300px] mx-auto px-5 md:px-10">
     <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
       <figure class="md:col-span-4 reveal">
-        <img src="images/C3-banana-sprite.jpg" alt="A 16-bit pixel-art sprite of a person in a banana suit holding a sunflower." class="w-full h-auto border-4 border-pink-500" style="image-rendering: pixelated;">
-        <figcaption class="label neon-yellow mt-3 text-center">★ THE FOUNDER, ALSO PLAYABLE ★</figcaption>
+        <img src="images/C3-banana-sprite.jpg" alt="A 16-bit pixel-art sprite of a person in a banana suit holding a sunflower." class="w-full h-auto border-4 border-pink-500" style="image-rendering: pixelated;" loading="lazy">
+        <figcaption class="label neon-yellow mt-3 text-center"><span aria-hidden="true">★</span> THE FOUNDER, ALSO PLAYABLE <span aria-hidden="true">★</span></figcaption>
       </figure>
       <div class="md:col-span-8">
-        <div class="label neon-cyan mb-3">★ DEV CREDITS ★</div>
+        <div class="label neon-cyan mb-3"><span aria-hidden="true">★</span> DEV CREDITS <span aria-hidden="true">★</span></div>
         <h2 class="display text-4xl md:text-5xl">BUILT BY A GUY IN A BANANA SUIT.</h2>
         <p class="mt-5 text-lg text-white/80 leading-relaxed">
-          Don't Die Alone was built by <span class="text-white">Zack Ballantine</span> under the Banana Bytes umbrella. He's near Palm Springs, single, hands out 3,000+ sunflowers a year, pays for everything with $2 bills, and wears a banana suit for the entire month of September every year for suicide awareness. He built this because the existing dating-coach industry runs on $99/month subscriptions and bullshit, and friends kept sending him their profiles asking what was wrong.
+          Don't Die Alone was built by <span class="text-white">Zack Ballantine</span> under the Banana Bytes umbrella. He's single, lives near Palm Springs, hands out 3,000+ sunflowers a year as random acts of kindness, pays for everything with $2 bills, and wears a banana suit for the entire month of September every year for suicide awareness.
         </p>
-        <p class="mt-4 text-base text-white/55 italic">★ This app exists because the founder ran out of patience. ★</p>
+        <p class="mt-4 text-lg text-white/80 leading-relaxed">
+          He built this because the existing dating-coach industry runs on $99/month subscriptions and bullshit, and friends kept sending him their profiles asking what was wrong.
+        </p>
+        <p class="mt-5 text-base text-white/60"><span aria-hidden="true">★</span> <span class="italic">This app exists because the founder ran out of patience.</span> <span aria-hidden="true">★</span></p>
       </div>
     </div>
   </div>
@@ -505,8 +511,8 @@
 <!-- FINAL CTA -->
 <section class="py-20 md:py-28 bg-black text-center relative overflow-hidden">
   <div class="absolute inset-0 opacity-40" style="background: radial-gradient(900px 600px at 50% 50%, rgba(236,72,153,0.25), transparent 65%);"></div>
-  <div class="max-w-[1100px] mx-auto px-5 md:px-10 relative">
-    <div class="label neon-yellow blink mb-6">★ STAGE 07 · CONTINUE? ★</div>
+  <div class="max-w-[1300px] mx-auto px-5 md:px-10 relative">
+    <div class="label neon-yellow blink mb-6"><span aria-hidden="true">★</span> STAGE 07 · CONTINUE? <span aria-hidden="true">★</span></div>
 
     <!-- INSERT COIN neon frame -->
     <figure class="cabinet rounded-sm overflow-hidden max-w-md md:max-w-lg mx-auto mb-8 md:mb-10">
@@ -514,8 +520,8 @@
     </figure>
 
     <h2 class="display text-6xl md:text-8xl lg:text-9xl">
-      <span class="neon-pink">GAME OVER?</span><br>
-      <span class="neon-cyan">RESTART</span>
+      <span class="block neon-pink">GAME OVER?</span>
+      <span class="block neon-cyan">RESTART</span>
     </h2>
     <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
       ~60 seconds of upload. The honesty your group chat is too polite to give you. Free during beta. Cap of 5 free runs — after that, $5 via Venmo for 10 more.
@@ -525,6 +531,8 @@
     </div>
   </div>
 </section>
+
+</main>
 
 <!-- BOTTOM MARQUEE — note: a tiny banana sprite is hidden in the loop (Easter egg) -->
 <div class="marquee">
@@ -549,7 +557,7 @@
 
 <!-- FOOTER -->
 <footer class="py-10 md:py-12 bg-[#0a0a0a]">
-  <div class="max-w-[1500px] mx-auto px-5 md:px-10 grid md:grid-cols-3 gap-6 text-sm">
+  <div class="max-w-[1300px] mx-auto px-5 md:px-10 grid md:grid-cols-3 gap-6 text-sm">
     <div>
       <div class="display text-2xl mb-2 neon-pink">Don't Die Alone</div>
       <p class="text-white/55 leading-relaxed">A brutal, evidence-based read on your dating profile. Free during beta.</p>
@@ -560,14 +568,14 @@
     </div>
     <div>
       <div class="label text-white/55 mb-3">FINE PRINT</div>
-      <p class="text-xs text-white/45 leading-relaxed">© Banana Bytes 2026. Cap of 5 free runs per visitor. After that, $5 via Venmo for 10 more — DM the receipt.</p>
+      <p class="text-xs text-white/60 leading-relaxed">© Banana Bytes 2026. Cap of 5 free runs per visitor. After that, $5 via Venmo for 10 more — DM the receipt.</p>
     </div>
   </div>
 </footer>
 
 <!-- Banana Bytes credit -->
 <div style="text-align:center; padding:1.5rem 1rem; font-size:0.7rem; letter-spacing:0.05em; opacity:0.45; background:#000; color:#fff;">
-  <a href="https://instagram.com/BananaCares" target="_blank" rel="noopener" style="text-decoration:none; color:inherit;">
+  <a href="https://instagram.com/BananaCares" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:inherit;">
     Mockup created by Banana Bytes
   </a>
 </div>
@@ -577,6 +585,21 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // Lifebar entry animation — fill from 0% to data-target when the section enters view
+  const lifebarIO = new IntersectionObserver((entries, obs) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.querySelectorAll('.lifebar-fill[data-target]').forEach(fill => {
+        const target = fill.getAttribute('data-target');
+        // small rAF delay so the transition fires
+        requestAnimationFrame(() => { fill.style.width = target + '%'; });
+      });
+      obs.unobserve(e.target);
+    });
+  }, { threshold: 0.3 });
+  const lifeSection = document.getElementById('status');
+  if (lifeSection) lifebarIO.observe(lifeSection);
 </script>
 
 </body>
