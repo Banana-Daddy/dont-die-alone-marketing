@@ -115,6 +115,7 @@
   .pixel-card.yellow:hover { box-shadow: 9px 9px 0 var(--yellow), 18px 18px 0 var(--crt); }
 
   .btn-coin {
+    display: inline-block;
     background: var(--pink);
     color: #fff;
     font-family: 'Anton', sans-serif;
@@ -124,11 +125,40 @@
     box-shadow: 6px 6px 0 var(--cyan), 12px 12px 0 var(--crt);
     transition: transform 0.18s ease, box-shadow 0.18s ease;
     cursor: pointer;
+    white-space: nowrap;
   }
   .btn-coin:hover {
     transform: translate(-3px, -3px);
     box-shadow: 9px 9px 0 var(--cyan), 18px 18px 0 var(--crt);
   }
+
+  /* Neon drop-cap glow for body paragraphs that need a bridge into the neon aesthetic */
+  .neon-drop::first-letter {
+    color: var(--cyan);
+    font-family: 'Anton', sans-serif;
+    font-size: 3.2rem;
+    line-height: 0.85;
+    float: left;
+    margin-right: 0.5rem;
+    margin-top: 0.2rem;
+    text-shadow: 0 0 6px var(--cyan), 0 0 18px rgba(34,211,238,0.55), 0 0 36px rgba(34,211,238,0.35);
+  }
+
+  /* Lifebar section gets the C4 CRT scanline as a low-opacity overlay backdrop */
+  .crt-backdrop {
+    position: relative;
+  }
+  .crt-backdrop::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('images/C4-crt-scanline.jpg') center/cover no-repeat;
+    opacity: 0.10;
+    mix-blend-mode: screen;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .crt-backdrop > * { position: relative; z-index: 1; }
 
   /* CRT border around cabinet */
   .cabinet {
@@ -150,7 +180,7 @@
     display: flex;
     gap: 3rem;
     width: max-content;
-    animation: marquee-scroll 26s linear infinite;
+    animation: marquee-scroll 18s linear infinite;
     padding: 0.9rem 0;
   }
   @keyframes marquee-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
@@ -196,7 +226,7 @@
     <div class="flex items-center gap-3 md:gap-5">
       <a href="#stage" class="label hidden sm:inline text-white/55 hover:text-white">STAGE 1</a>
       <a href="#research" class="label hidden sm:inline text-white/55 hover:text-white">CREDITS</a>
-      <a href="https://dontdiealone.app/scan" class="btn-coin px-4 md:px-6 py-2 md:py-3 text-sm md:text-base">PLAY NOW</a>
+      <a href="https://www.dontdiealone.app" class="btn-coin px-4 md:px-6 py-2 md:py-3 text-sm md:text-base">PLAY NOW</a>
     </div>
   </div>
 </header>
@@ -220,7 +250,7 @@
         Insert coin. Upload your screenshots. We score every photo, your bio, and your prompts against published platform research.
       </p>
       <div class="mt-8 md:mt-10 flex justify-center">
-        <a href="https://dontdiealone.app/scan" class="btn-coin px-8 md:px-10 py-4 md:py-5 text-xl md:text-2xl">★ SCORE MY PROFILE ★</a>
+        <a href="https://www.dontdiealone.app" class="btn-coin px-8 md:px-10 py-4 md:py-5 text-xl md:text-2xl">★ SCORE MY PROFILE</a>
       </div>
       <div class="label text-white/55 mt-6">FREE IN BETA · ~60 SEC · NO LOGIN</div>
     </div>
@@ -228,7 +258,7 @@
 </section>
 
 <!-- LIFEBARS -->
-<section class="py-16 md:py-24 bg-[#0d0d0d] border-y-2 border-pink-500/40">
+<section class="crt-backdrop py-16 md:py-24 bg-[#0d0d0d] border-y-2 border-pink-500/40">
   <div class="max-w-[1300px] mx-auto px-5 md:px-10">
     <div class="text-center mb-10 md:mb-14">
       <div class="label neon-cyan mb-3">★ STAGE 02 · STATUS ★</div>
@@ -287,8 +317,8 @@
         <span class="neon-cyan">THIS IS NOT</span><br>
         <span class="neon-pink">A VIBES PROBLEM.</span>
       </h2>
-      <p class="mt-6 max-w-2xl text-lg md:text-xl text-white/75 leading-relaxed">
-        Loneliness in young men isn't a meme — it's a measurable health crisis. The apps that promised to fix it are statistically making it worse. Insert coin. Stop guessing.
+      <p class="neon-drop mt-6 max-w-2xl text-lg md:text-xl text-white/85 leading-relaxed">
+        Loneliness in young men isn't a meme — it's a measurable health crisis. The apps that promised to fix it are statistically making it worse. Insert coin. <span class="neon-yellow">Stop</span> guessing.
       </p>
     </div>
 
@@ -428,22 +458,22 @@
 
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
       <article class="pixel-card cyan p-6 text-center">
-        <div class="display text-6xl md:text-7xl neon-cyan">+47<span class="text-3xl">%</span></div>
+        <div class="display text-5xl md:text-7xl neon-cyan">+47<span class="text-2xl md:text-3xl">%</span></div>
         <p class="mt-3 text-sm text-white/85 leading-snug">Hinge prompt likes lead to a date 47% more often than photo likes.</p>
         <div class="label text-white/45 mt-3">HINGE · 2024</div>
       </article>
       <article class="pixel-card yellow p-6 text-center">
-        <div class="display text-6xl md:text-7xl neon-yellow">+102<span class="text-3xl">%</span></div>
+        <div class="display text-5xl md:text-7xl neon-yellow">+102<span class="text-2xl md:text-3xl">%</span></div>
         <p class="mt-3 text-sm text-white/85 leading-snug">Forward-facing male headshots get 102% more likes than the average dating-app photo.</p>
         <div class="label text-white/45 mt-3">HINGE PFP REPORT</div>
       </article>
       <article class="pixel-card cyan p-6 text-center">
-        <div class="display text-6xl md:text-7xl neon-cyan">+70<span class="text-3xl">%</span></div>
+        <div class="display text-5xl md:text-7xl neon-cyan">+70<span class="text-2xl md:text-3xl">%</span></div>
         <p class="mt-3 text-sm text-white/85 leading-snug">Bumble's verified-profile badge increases match rate.</p>
         <div class="label text-white/45 mt-3">BUMBLE PLATFORM</div>
       </article>
       <article class="pixel-card p-6 text-center">
-        <div class="display text-6xl md:text-7xl neon-pink">−90<span class="text-3xl">%</span></div>
+        <div class="display text-5xl md:text-7xl neon-pink">−90<span class="text-2xl md:text-3xl">%</span></div>
         <p class="mt-3 text-sm text-white/85 leading-snug">Bathroom selfies are 90% less likely to be liked.</p>
         <div class="label text-white/45 mt-3">HINGE PFP REPORT</div>
       </article>
@@ -457,7 +487,7 @@
     <div class="grid md:grid-cols-12 gap-8 md:gap-12 items-center">
       <figure class="md:col-span-4 reveal">
         <img src="images/C3-banana-sprite.jpg" alt="A 16-bit pixel-art sprite of a person in a banana suit holding a sunflower." class="w-full h-auto border-4 border-pink-500" style="image-rendering: pixelated;">
-        <figcaption class="label neon-yellow mt-3 text-center">★ HIDDEN CHARACTER UNLOCKED ★</figcaption>
+        <figcaption class="label neon-yellow mt-3 text-center">★ THE FOUNDER, ALSO PLAYABLE ★</figcaption>
       </figure>
       <div class="md:col-span-8">
         <div class="label neon-cyan mb-3">★ DEV CREDITS ★</div>
@@ -475,29 +505,41 @@
 <section class="py-20 md:py-28 bg-black text-center relative overflow-hidden">
   <div class="absolute inset-0 opacity-40" style="background: radial-gradient(900px 600px at 50% 50%, rgba(236,72,153,0.25), transparent 65%);"></div>
   <div class="max-w-[1100px] mx-auto px-5 md:px-10 relative">
-    <div class="label neon-yellow blink mb-6">★ INSERT COIN ★</div>
-    <h2 class="display text-6xl md:text-7xl lg:text-9xl">
-      <span class="neon-pink">SCORE MY</span><br>
-      <span class="neon-cyan">PROFILE.</span>
+    <div class="label neon-yellow blink mb-6">★ STAGE 07 · CONTINUE? ★</div>
+
+    <!-- INSERT COIN neon frame -->
+    <figure class="cabinet rounded-sm overflow-hidden max-w-md md:max-w-lg mx-auto mb-8 md:mb-10">
+      <img src="images/C5-insert-coin.jpg" alt="A glowing pink-and-cyan INSERT COIN neon arcade-bar sign viewed through rain-streaked glass." class="w-full h-auto" loading="lazy">
+    </figure>
+
+    <h2 class="display text-6xl md:text-8xl lg:text-9xl">
+      <span class="neon-pink">GAME OVER?</span><br>
+      <span class="neon-cyan">RESTART.</span>
     </h2>
     <p class="mt-6 text-lg md:text-xl text-white/70 max-w-2xl mx-auto">
       ~60 seconds of upload. The honesty your group chat is too polite to give you. Free during beta. Cap of 5 free runs — after that, $5 via Venmo for 10 more.
     </p>
     <div class="mt-10">
-      <a href="https://dontdiealone.app/scan" class="btn-coin px-10 md:px-12 py-5 md:py-6 text-2xl md:text-3xl">★ READ ME TO FILTH ★</a>
+      <a href="https://www.dontdiealone.app" class="btn-coin px-10 md:px-12 py-5 md:py-6 text-2xl md:text-3xl">★ READ ME TO FILTH</a>
     </div>
   </div>
 </section>
 
-<!-- BOTTOM MARQUEE -->
+<!-- BOTTOM MARQUEE — note: a tiny banana sprite is hidden in the loop (Easter egg) -->
 <div class="marquee">
   <div class="marquee-track">
     <span class="marquee-item neon-cyan">PRESS START</span>
     <span class="marquee-item neon-yellow">© BANANA BYTES 2026</span>
     <span class="marquee-item neon-pink">★ INSERT COIN</span>
+    <img src="images/C3-banana-sprite.jpg" alt="" aria-hidden="true" class="h-10 w-10 self-center" style="image-rendering: pixelated;" title="?">
     <span class="marquee-item neon-cyan">PRESS START</span>
     <span class="marquee-item neon-yellow">© BANANA BYTES 2026</span>
     <span class="marquee-item neon-pink">★ INSERT COIN</span>
+    <!-- duplicate set for seamless scroll -->
+    <span class="marquee-item neon-cyan">PRESS START</span>
+    <span class="marquee-item neon-yellow">© BANANA BYTES 2026</span>
+    <span class="marquee-item neon-pink">★ INSERT COIN</span>
+    <img src="images/C3-banana-sprite.jpg" alt="" aria-hidden="true" class="h-10 w-10 self-center" style="image-rendering: pixelated;" title="?">
     <span class="marquee-item neon-cyan">PRESS START</span>
     <span class="marquee-item neon-yellow">© BANANA BYTES 2026</span>
     <span class="marquee-item neon-pink">★ INSERT COIN</span>
